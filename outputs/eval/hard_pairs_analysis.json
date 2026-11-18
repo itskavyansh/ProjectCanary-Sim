@@ -1,0 +1,542 @@
+{
+  "gradual_vs_sensor_fault": {
+    "counts_by_model": {
+      "threshold_rule": {
+        "gradual_misclassified_as_sensor_fault": 3,
+        "sensor_fault_misclassified_as_gradual": 51,
+        "total_pair_confusions": 54,
+        "gradual_support": 1333,
+        "sensor_fault_support": 555
+      },
+      "logistic_regression": {
+        "gradual_misclassified_as_sensor_fault": 129,
+        "sensor_fault_misclassified_as_gradual": 71,
+        "total_pair_confusions": 200,
+        "gradual_support": 1333,
+        "sensor_fault_support": 555
+      },
+      "random_forest": {
+        "gradual_misclassified_as_sensor_fault": 6,
+        "sensor_fault_misclassified_as_gradual": 91,
+        "total_pair_confusions": 97,
+        "gradual_support": 1333,
+        "sensor_fault_support": 555
+      }
+    },
+    "patterns": [
+      {
+        "pattern": "Single/two-node IMU slow_drift or bias_step mimicking basin tilt ramp",
+        "count": 82,
+        "examples": [
+          {
+            "simulation_id": "sim_test_sensor_fault_2026112261",
+            "window_idx": 36,
+            "t_range_s": "[90.0, 95.0)",
+            "true_label": "sensor_fault",
+            "rf_pred": "rapid",
+            "th_pred": "gradual",
+            "snr": 0.0,
+            "fault_type": "bias_step",
+            "NODE_01_mean": 0.6076,
+            "long_slope_max": 0.00871,
+            "piezo_rms_net": 0.0091,
+            "hub_cm_m": -0.01,
+            "comm_miss_net": 0.0
+          },
+          {
+            "simulation_id": "sim_test_sensor_fault_2026112261",
+            "window_idx": 37,
+            "t_range_s": "[92.5, 97.5)",
+            "true_label": "sensor_fault",
+            "rf_pred": "rapid",
+            "th_pred": "gradual",
+            "snr": 0.0,
+            "fault_type": "bias_step",
+            "NODE_01_mean": 0.6411,
+            "long_slope_max": 0.01298,
+            "piezo_rms_net": 0.0083,
+            "hub_cm_m": -0.01,
+            "comm_miss_net": 0.0
+          }
+        ]
+      },
+      {
+        "pattern": "Asymmetric off-centre gradual basin loading 1 corner node strongly (mistaken for single-node sensor fault)",
+        "count": 38,
+        "examples": [
+          {
+            "simulation_id": "sim_test_gradual_2026112201",
+            "window_idx": 48,
+            "t_range_s": "[120.0, 125.0)",
+            "true_label": "gradual",
+            "rf_pred": "normal",
+            "th_pred": "normal",
+            "snr": 6.489,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.3719,
+            "long_slope_max": 0.00543,
+            "piezo_rms_net": 0.0074,
+            "hub_cm_m": -0.005,
+            "comm_miss_net": 0.0
+          },
+          {
+            "simulation_id": "sim_test_gradual_2026112201",
+            "window_idx": 49,
+            "t_range_s": "[122.5, 127.5)",
+            "true_label": "gradual",
+            "rf_pred": "gradual",
+            "th_pred": "normal",
+            "snr": 6.489,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.3834,
+            "long_slope_max": 0.00361,
+            "piezo_rms_net": 0.0062,
+            "hub_cm_m": -0.005,
+            "comm_miss_net": 0.0
+          }
+        ]
+      },
+      {
+        "pattern": "Hub wrong_dwell / stale_readings window before next LiDAR pass where IMU noise mimics minor tilt",
+        "count": 4,
+        "examples": [
+          {
+            "simulation_id": "sim_test_sensor_fault_2026112268",
+            "window_idx": 32,
+            "t_range_s": "[80.0, 85.0)",
+            "true_label": "sensor_fault",
+            "rf_pred": "normal",
+            "th_pred": "normal",
+            "snr": 0.0,
+            "fault_type": "wrong_dwell_position",
+            "NODE_01_mean": 0.3216,
+            "long_slope_max": 0.00333,
+            "piezo_rms_net": 0.008,
+            "hub_cm_m": 0.0288,
+            "comm_miss_net": 0.0
+          },
+          {
+            "simulation_id": "sim_test_sensor_fault_2026112268",
+            "window_idx": 33,
+            "t_range_s": "[82.5, 87.5)",
+            "true_label": "sensor_fault",
+            "rf_pred": "gradual",
+            "th_pred": "normal",
+            "snr": 0.0,
+            "fault_type": "wrong_dwell_position",
+            "NODE_01_mean": 0.3259,
+            "long_slope_max": 0.00315,
+            "piezo_rms_net": 0.0064,
+            "hub_cm_m": 0.0288,
+            "comm_miss_net": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  "normal_vs_abnormal_vibration": {
+    "counts_by_model": {
+      "threshold_rule": {
+        "normal_misclassified_as_abnormal_vibration": 4,
+        "abnormal_vibration_misclassified_as_normal": 0,
+        "total_pair_confusions": 4,
+        "normal_support": 7154,
+        "abnormal_vibration_support": 502
+      },
+      "logistic_regression": {
+        "normal_misclassified_as_abnormal_vibration": 0,
+        "abnormal_vibration_misclassified_as_normal": 0,
+        "total_pair_confusions": 0,
+        "normal_support": 7154,
+        "abnormal_vibration_support": 502
+      },
+      "random_forest": {
+        "normal_misclassified_as_abnormal_vibration": 0,
+        "abnormal_vibration_misclassified_as_normal": 0,
+        "total_pair_confusions": 0,
+        "normal_support": 7154,
+        "abnormal_vibration_support": 502
+      }
+    },
+    "patterns": [
+      {
+        "pattern": "Two-node benign wind burst + coinciding background piezo impulse in a normal window exceeding threshold",
+        "count": 4,
+        "examples": [
+          {
+            "simulation_id": "sim_test_normal_2026112193",
+            "window_idx": 11,
+            "t_range_s": "[27.5, 32.5)",
+            "true_label": "normal",
+            "rf_pred": "normal",
+            "th_pred": "abnormal_vibration",
+            "snr": 0.0,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.1368,
+            "long_slope_max": 0.00294,
+            "piezo_rms_net": 0.0186,
+            "hub_cm_m": -0.0063,
+            "comm_miss_net": 0.0
+          },
+          {
+            "simulation_id": "sim_test_gradual_2026112204",
+            "window_idx": 3,
+            "t_range_s": "[7.5, 12.5)",
+            "true_label": "normal",
+            "rf_pred": "normal",
+            "th_pred": "abnormal_vibration",
+            "snr": 5.301,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.244,
+            "long_slope_max": 0.00518,
+            "piezo_rms_net": 0.0194,
+            "hub_cm_m": 0.025,
+            "comm_miss_net": 0.0
+          }
+        ]
+      },
+      {
+        "pattern": "Onset/tail boundary window of abnormal_vibration where ramp envelope is near minimum",
+        "count": 62,
+        "examples": [
+          {
+            "simulation_id": "sim_test_abnormal_vibration_2026112254",
+            "window_idx": 27,
+            "t_range_s": "[67.5, 72.5)",
+            "true_label": "abnormal_vibration",
+            "rf_pred": "abnormal_vibration",
+            "th_pred": "abnormal_vibration",
+            "snr": 0.0,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.6106,
+            "long_slope_max": 0.0076,
+            "piezo_rms_net": 0.0215,
+            "hub_cm_m": 0.0125,
+            "comm_miss_net": 0.0
+          },
+          {
+            "simulation_id": "sim_test_abnormal_vibration_2026112257",
+            "window_idx": 32,
+            "t_range_s": "[80.0, 85.0)",
+            "true_label": "abnormal_vibration",
+            "rf_pred": "abnormal_vibration",
+            "th_pred": "abnormal_vibration",
+            "snr": 0.0,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.4553,
+            "long_slope_max": 0.00516,
+            "piezo_rms_net": 0.034,
+            "hub_cm_m": -0.0213,
+            "comm_miss_net": 0.0
+          }
+        ]
+      },
+      {
+        "pattern": "Abnormal vibration window with lowest network piezo RMS / fewest simultaneous impulse nodes",
+        "count": 199,
+        "examples": [
+          {
+            "simulation_id": "sim_test_abnormal_vibration_2026112254",
+            "window_idx": 27,
+            "t_range_s": "[67.5, 72.5)",
+            "true_label": "abnormal_vibration",
+            "rf_pred": "abnormal_vibration",
+            "th_pred": "abnormal_vibration",
+            "snr": 0.0,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.6106,
+            "long_slope_max": 0.0076,
+            "piezo_rms_net": 0.0215,
+            "hub_cm_m": 0.0125,
+            "comm_miss_net": 0.0
+          },
+          {
+            "simulation_id": "sim_test_abnormal_vibration_2026112254",
+            "window_idx": 57,
+            "t_range_s": "[142.5, 147.5)",
+            "true_label": "abnormal_vibration",
+            "rf_pred": "abnormal_vibration",
+            "th_pred": "abnormal_vibration",
+            "snr": 0.0,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.394,
+            "long_slope_max": 0.00779,
+            "piezo_rms_net": 0.0318,
+            "hub_cm_m": -0.015,
+            "comm_miss_net": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  "comm_fault_vs_sensor_fault": {
+    "counts_by_model": {
+      "threshold_rule": {
+        "comm_fault_misclassified_as_sensor_fault": 0,
+        "sensor_fault_misclassified_as_comm_fault": 0,
+        "total_pair_confusions": 0,
+        "comm_fault_support": 530,
+        "sensor_fault_support": 555
+      },
+      "logistic_regression": {
+        "comm_fault_misclassified_as_sensor_fault": 18,
+        "sensor_fault_misclassified_as_comm_fault": 7,
+        "total_pair_confusions": 25,
+        "comm_fault_support": 530,
+        "sensor_fault_support": 555
+      },
+      "random_forest": {
+        "comm_fault_misclassified_as_sensor_fault": 0,
+        "sensor_fault_misclassified_as_comm_fault": 2,
+        "total_pair_confusions": 2,
+        "comm_fault_support": 530,
+        "sensor_fault_support": 555
+      }
+    },
+    "patterns": [
+      {
+        "pattern": "Sensor fault window coinciding with background LoRa packet loss (comm_missing_frac_net >= 0.05)",
+        "count": 3,
+        "examples": [
+          {
+            "simulation_id": "sim_test_sensor_fault_2026112261",
+            "window_idx": 65,
+            "t_range_s": "[162.5, 167.5)",
+            "true_label": "sensor_fault",
+            "rf_pred": "comm_fault",
+            "th_pred": "gradual",
+            "snr": 0.0,
+            "fault_type": "bias_step",
+            "NODE_01_mean": 0.6357,
+            "long_slope_max": 0.00187,
+            "piezo_rms_net": 0.0088,
+            "hub_cm_m": -0.01,
+            "comm_miss_net": 0.1
+          },
+          {
+            "simulation_id": "sim_test_sensor_fault_2026112261",
+            "window_idx": 66,
+            "t_range_s": "[165.0, 170.0)",
+            "true_label": "sensor_fault",
+            "rf_pred": "comm_fault",
+            "th_pred": "gradual",
+            "snr": 0.0,
+            "fault_type": "bias_step",
+            "NODE_01_mean": 0.6384,
+            "long_slope_max": 0.00052,
+            "piezo_rms_net": 0.0111,
+            "hub_cm_m": -0.0025,
+            "comm_miss_net": 0.1
+          }
+        ]
+      },
+      {
+        "pattern": "Sparse packet_drops comm_fault window (missing_frac <= 0.20) where IMU noise triggers sensor_fault",
+        "count": 18,
+        "examples": [
+          {
+            "simulation_id": "sim_test_comm_fault_2026112281",
+            "window_idx": 40,
+            "t_range_s": "[100.0, 105.0)",
+            "true_label": "comm_fault",
+            "rf_pred": "gradual",
+            "th_pred": "gradual",
+            "snr": 0.0,
+            "fault_type": "packet_drops",
+            "NODE_01_mean": 0.4349,
+            "long_slope_max": 0.0105,
+            "piezo_rms_net": 0.0127,
+            "hub_cm_m": 0.01,
+            "comm_miss_net": 0.1
+          },
+          {
+            "simulation_id": "sim_test_comm_fault_2026112281",
+            "window_idx": 42,
+            "t_range_s": "[105.0, 110.0)",
+            "true_label": "comm_fault",
+            "rf_pred": "normal",
+            "th_pred": "normal",
+            "snr": 0.0,
+            "fault_type": "packet_drops",
+            "NODE_01_mean": 0.5069,
+            "long_slope_max": 0.00598,
+            "piezo_rms_net": 0.0151,
+            "hub_cm_m": 0.0275,
+            "comm_miss_net": 0.1
+          }
+        ]
+      },
+      {
+        "pattern": "Added-latency comm_fault window with zero packet drops where random tilt excursion triggers sensor_fault",
+        "count": 26,
+        "examples": [
+          {
+            "simulation_id": "sim_test_sensor_fault_2026112261",
+            "window_idx": 65,
+            "t_range_s": "[162.5, 167.5)",
+            "true_label": "sensor_fault",
+            "rf_pred": "comm_fault",
+            "th_pred": "gradual",
+            "snr": 0.0,
+            "fault_type": "bias_step",
+            "NODE_01_mean": 0.6357,
+            "long_slope_max": 0.00187,
+            "piezo_rms_net": 0.0088,
+            "hub_cm_m": -0.01,
+            "comm_miss_net": 0.1
+          },
+          {
+            "simulation_id": "sim_test_sensor_fault_2026112261",
+            "window_idx": 66,
+            "t_range_s": "[165.0, 170.0)",
+            "true_label": "sensor_fault",
+            "rf_pred": "comm_fault",
+            "th_pred": "gradual",
+            "snr": 0.0,
+            "fault_type": "bias_step",
+            "NODE_01_mean": 0.6384,
+            "long_slope_max": 0.00052,
+            "piezo_rms_net": 0.0111,
+            "hub_cm_m": -0.0025,
+            "comm_miss_net": 0.1
+          }
+        ]
+      }
+    ]
+  },
+  "gradual_vs_rapid": {
+    "counts_by_model": {
+      "threshold_rule": {
+        "gradual_misclassified_as_rapid": 192,
+        "rapid_misclassified_as_gradual": 190,
+        "total_pair_confusions": 382,
+        "gradual_support": 1333,
+        "rapid_support": 1167
+      },
+      "logistic_regression": {
+        "gradual_misclassified_as_rapid": 347,
+        "rapid_misclassified_as_gradual": 319,
+        "total_pair_confusions": 666,
+        "gradual_support": 1333,
+        "rapid_support": 1167
+      },
+      "random_forest": {
+        "gradual_misclassified_as_rapid": 160,
+        "rapid_misclassified_as_gradual": 462,
+        "total_pair_confusions": 622,
+        "gradual_support": 1333,
+        "rapid_support": 1167
+      }
+    },
+    "patterns": [
+      {
+        "pattern": "Rapid basin in post-ramp aftermath hold (within-window slope ~0 deg/s, indistinguishable from held gradual tilt)",
+        "count": 493,
+        "examples": [
+          {
+            "simulation_id": "sim_test_rapid_2026112221",
+            "window_idx": 55,
+            "t_range_s": "[137.5, 142.5)",
+            "true_label": "rapid",
+            "rf_pred": "gradual",
+            "th_pred": "rapid",
+            "snr": 0.627,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.4128,
+            "long_slope_max": 0.00577,
+            "piezo_rms_net": 0.0097,
+            "hub_cm_m": -0.025,
+            "comm_miss_net": 0.05
+          },
+          {
+            "simulation_id": "sim_test_rapid_2026112221",
+            "window_idx": 56,
+            "t_range_s": "[140.0, 145.0)",
+            "true_label": "rapid",
+            "rf_pred": "gradual",
+            "th_pred": "normal",
+            "snr": 0.627,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.4514,
+            "long_slope_max": 0.00757,
+            "piezo_rms_net": 0.0089,
+            "hub_cm_m": -0.0375,
+            "comm_miss_net": 0.0
+          }
+        ]
+      },
+      {
+        "pattern": "High-SNR gradual basin during steepest mid-ramp phase (high slope mimicking rapid onset)",
+        "count": 311,
+        "examples": [
+          {
+            "simulation_id": "sim_test_gradual_2026112201",
+            "window_idx": 43,
+            "t_range_s": "[107.5, 112.5)",
+            "true_label": "gradual",
+            "rf_pred": "gradual",
+            "th_pred": "rapid",
+            "snr": 6.489,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.4351,
+            "long_slope_max": 0.00463,
+            "piezo_rms_net": 0.0091,
+            "hub_cm_m": 0.0025,
+            "comm_miss_net": 0.0
+          },
+          {
+            "simulation_id": "sim_test_gradual_2026112201",
+            "window_idx": 46,
+            "t_range_s": "[115.0, 120.0)",
+            "true_label": "gradual",
+            "rf_pred": "normal",
+            "th_pred": "normal",
+            "snr": 6.489,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.564,
+            "long_slope_max": 0.00411,
+            "piezo_rms_net": 0.0078,
+            "hub_cm_m": -0.0075,
+            "comm_miss_net": 0.0
+          }
+        ]
+      },
+      {
+        "pattern": "Low-SNR (<1.2) basin windows where IMU white noise dominates both short and 12-window slopes",
+        "count": 316,
+        "examples": [
+          {
+            "simulation_id": "sim_test_gradual_2026112208",
+            "window_idx": 52,
+            "t_range_s": "[130.0, 135.0)",
+            "true_label": "gradual",
+            "rf_pred": "normal",
+            "th_pred": "normal",
+            "snr": 0.646,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.1966,
+            "long_slope_max": 0.00252,
+            "piezo_rms_net": 0.0118,
+            "hub_cm_m": 0.0125,
+            "comm_miss_net": 0.0
+          },
+          {
+            "simulation_id": "sim_test_gradual_2026112208",
+            "window_idx": 81,
+            "t_range_s": "[202.5, 207.5)",
+            "true_label": "gradual",
+            "rf_pred": "normal",
+            "th_pred": "normal",
+            "snr": 0.646,
+            "fault_type": "nan",
+            "NODE_01_mean": 0.2087,
+            "long_slope_max": 0.00216,
+            "piezo_rms_net": 0.0092,
+            "hub_cm_m": 0.0125,
+            "comm_miss_net": 0.0
+          }
+        ]
+      }
+    ]
+  }
+}

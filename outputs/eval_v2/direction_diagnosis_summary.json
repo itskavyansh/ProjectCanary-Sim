@@ -1,0 +1,50 @@
+{
+  "separability_by_snr": {
+    "<0.5": {
+      "n_gradual_windows": 1017,
+      "n_sf_drift_windows": 422,
+      "gradual_cos_mean_median": -0.0765,
+      "sf_drift_cos_mean_median": -0.0368,
+      "gradual_diag_centre_angle_median_deg": 79.74,
+      "sf_drift_diag_centre_angle_median_deg": 90.0
+    },
+    "0.5-1": {
+      "n_gradual_windows": 781,
+      "n_sf_drift_windows": 422,
+      "gradual_cos_mean_median": -0.0912,
+      "sf_drift_cos_mean_median": -0.0368,
+      "gradual_diag_centre_angle_median_deg": 72.72,
+      "sf_drift_diag_centre_angle_median_deg": 90.0
+    },
+    "1-2": {
+      "n_gradual_windows": 801,
+      "n_sf_drift_windows": 422,
+      "gradual_cos_mean_median": -0.042,
+      "sf_drift_cos_mean_median": -0.0368,
+      "gradual_diag_centre_angle_median_deg": 66.49,
+      "sf_drift_diag_centre_angle_median_deg": 90.0
+    },
+    "2-5": {
+      "n_gradual_windows": 1311,
+      "n_sf_drift_windows": 422,
+      "gradual_cos_mean_median": -0.1299,
+      "sf_drift_cos_mean_median": -0.0368,
+      "gradual_diag_centre_angle_median_deg": 49.14,
+      "sf_drift_diag_centre_angle_median_deg": 90.0
+    },
+    ">5": {
+      "n_gradual_windows": 1416,
+      "n_sf_drift_windows": 422,
+      "gradual_cos_mean_median": -0.1092,
+      "sf_drift_cos_mean_median": -0.0368,
+      "gradual_diag_centre_angle_median_deg": 22.72,
+      "sf_drift_diag_centre_angle_median_deg": 90.0
+    }
+  },
+  "four_root_causes": [
+    "1. Uncalibrated random mounting yaw (0-360 deg per node): observable tilt vectors are in each node's local sensor frame, so comparing angles across nodes without yaw calibration produces uniform random pairwise cosines (~ -0.08) regardless of SNR.",
+    "2. Geometry of corner nodes around a central basin: even in the world frame, nodes on opposite corners of the 20x20 m square tilt inward in opposite directions (cos(180 deg) = -1), so pairwise cosine similarity does not increase for a symmetric central basin.",
+    "3. IMU white noise (0.13-0.23 deg/sample, ~0.084 deg on a 5-sample window mean) plus off-centre basins: even with true yaw and true centre (`diag_mean_angle_to_true_centre_deg`), inward dip alignment only drops below 45 deg when SNR >= 2-5 (median 49.1 deg at SNR 2-5, 22.7 deg at SNR > 5 vs 90 deg on single-node drift).",
+    "4. Short 5 s window length for within-window coherence: over 5 s, a gradual event (tau ~ 120 s) changes tilt by <0.02 deg, which is >10x smaller than the 0.19 deg IMU white noise, so within-window Pearson correlation (`coherence`, `coherence_signed_mean`) is pure noise (~0.00) at every SNR."
+  ]
+}

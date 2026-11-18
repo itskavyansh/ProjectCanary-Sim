@@ -1,2 +1,7 @@
 __pycache__/
 .pytest_cache/
+outputs/datasets/
+outputs/datasets_v3/
+outputs/pipeline_check/
+*.pkl
+outputs/*/window_features.csv

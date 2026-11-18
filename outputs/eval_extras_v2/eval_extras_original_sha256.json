@@ -1,0 +1,17 @@
+{
+  "false_alarm_per_hour_tradeoff.png": "c22961b6c7ac30e5ef0dbca541452eadd8260faefc4f3af3d1239c9abb4c08d3",
+  "false_alarms_per_hour.csv": "a80c5c103de7eb5d28a7e62452b40d7c44ffb2614010ac2716c3e5c72e35809e",
+  "false_alarms_per_hour.md": "d396d2b3f32d8f34e16b4bca17057ba2544c21dc5551521433bdb5bf16bee19c",
+  "permutation_importance_all_features.csv": "a1d7011785ecc4137eadf599983c997a0c75785aa852a334b16c7df6a3a81434",
+  "permutation_importance_groups.csv": "3269baa4099d2121cc58a89c6c02d5fa5fcfbf66723e6dc6e82f2b6b4c2ef6e5",
+  "permutation_importance_groups.md": "ea5a979a23e52eccaef053a28de1106e38dd8a7b6c004e65a07b1b42f89158dd",
+  "permutation_importance_top20.csv": "34b7369ced5bc1c71e5e7777f4e781169d4f2308b4315f0a5912cd5170fcd130",
+  "permutation_importance_top20.md": "8e3f86b88305e71d79506ce87c1cb0eed7577ba75d8f516a95b54d04ba6ae800",
+  "permutation_importance_val.png": "10b8ead5537a24d646c1d81ea1dbf478e2aa9d4fe29d7f4c76e5bdb429f1611c",
+  "reliability_diagram_val.png": "30523cb5bcffb5486dc89505445984066d9f62a13105bf7dc20799e0dd04fcec",
+  "score_calibration_per_class_val.csv": "adabaf076d320c840054c13ac6387c77196ec3a225d3b48ce2fc4d759645331b",
+  "score_calibration_top1_val.csv": "4746c575b12e4ce64eeb88f950c9e116944c849aebb65aae486724229d0f2a5a",
+  "score_calibration_top1_val.md": "c94085b179a0227dcdcaadd07b8cb3902b85b2cb5cf236b3170e6bbaa3742924",
+  "window_accuracy_and_f1.csv": "3eac92c947cb269f869c362cab84ac5bbb6496d547905a0410ab8bacbe7cd804",
+  "window_accuracy_and_f1.md": "ad46289edada72bf6878b084d2a6354435e80fc898eecb470f606846e820e478"
+}

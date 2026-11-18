@@ -1,0 +1,126 @@
+{
+  "simulation_id": "sim_gradual_20260001",
+  "schema_version": "1.0",
+  "synthetic": true,
+  "parameters": {
+    "seed": 20260001,
+    "mode": "gradual",
+    "x0": 22.649986266533723,
+    "y0": -7.384732334950456,
+    "sx": 8.932410774556995,
+    "sy": 15.461431348704725,
+    "aspect_sy_over_sx": 1.730935996891784,
+    "theta_deg": 133.0211565385509,
+    "peak_tilt_deg": 0.3036005642593234,
+    "s_max": 0.0780368866216481,
+    "t_on_frac": 0.3877339695876578,
+    "tau_frac": 0.5119269500962673,
+    "t_on": 93.05615270103787,
+    "tau": 122.86246802310416,
+    "t_on_tau_resample_attempts": 7,
+    "duration_s": 240.0,
+    "sample_rate_hz": 10.0,
+    "physical_duration_s": 86400.0,
+    "compression_factor": 360.0,
+    "placeholder_ranges": true,
+    "broad_basin_subset": false
+  },
+  "mountings": {
+    "NODE_01": {
+      "node_id": "NODE_01",
+      "yaw_deg": 107.77036605489339,
+      "yaw_error_deg": -0.2445866176264883,
+      "tilt_x_offset_deg": 0.025570565481730374,
+      "tilt_y_offset_deg": -0.0005083006789778348
+    },
+    "NODE_02": {
+      "node_id": "NODE_02",
+      "yaw_deg": 96.37787743985463,
+      "yaw_error_deg": 0.04393317488261792,
+      "tilt_x_offset_deg": -0.0034282501022446094,
+      "tilt_y_offset_deg": 0.0066521239912610665
+    },
+    "NODE_03": {
+      "node_id": "NODE_03",
+      "yaw_deg": 139.07945835164375,
+      "yaw_error_deg": 0.7504487772225511,
+      "tilt_x_offset_deg": 0.01710160294888699,
+      "tilt_y_offset_deg": -0.014491651091625504
+    },
+    "NODE_04": {
+      "node_id": "NODE_04",
+      "yaw_deg": 72.10493700317724,
+      "yaw_error_deg": -0.2631164522386483,
+      "tilt_x_offset_deg": -0.016623063503555642,
+      "tilt_y_offset_deg": -0.007564687877002679
+    },
+    "HUB": {
+      "node_id": "HUB",
+      "yaw_deg": 0.0,
+      "yaw_error_deg": 0.0,
+      "tilt_x_offset_deg": 0.0,
+      "tilt_y_offset_deg": 0.0
+    }
+  },
+  "config": {
+    "seed": 20260001,
+    "mode": "gradual",
+    "run": {
+      "duration_s": 240.0,
+      "sample_rate_hz": 10.0,
+      "min_hold_fraction": 0.1
+    },
+    "time_compression": {
+      "gradual": {
+        "physical_duration_s": 86400.0
+      },
+      "rapid": {
+        "physical_duration_s": 240.0
+      }
+    },
+    "ranges": {
+      "centre_radii": 1.5,
+      "sigma_radii": [
+        0.4,
+        1.5
+      ],
+      "broad_basin_subset": false,
+      "sigma_radii_broad_max": 2.5,
+      "aspect_sy_over_sx": [
+        1.0,
+        2.0
+      ],
+      "theta_deg": [
+        0.0,
+        180.0
+      ],
+      "peak_tilt_deg": [
+        0.05,
+        3.0
+      ],
+      "t_on_frac": [
+        0.2,
+        0.5
+      ],
+      "tau_frac": {
+        "gradual": [
+          0.4,
+          0.8
+        ],
+        "rapid": [
+          0.02,
+          0.08
+        ]
+      },
+      "max_resample": 1000
+    },
+    "mounting": {
+      "yaw_error_sd_deg": 1.0,
+      "level_offset_sd_deg": 0.02
+    },
+    "telemetry_placeholder": {
+      "tilt_noise_sd_deg": 0.02,
+      "seed_offset": 7919
+    }
+  }
+}

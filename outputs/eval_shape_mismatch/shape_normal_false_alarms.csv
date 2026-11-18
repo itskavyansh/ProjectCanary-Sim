@@ -1,0 +1,46 @@
+shape,model,regime,k,m,n_normal_runs,fa_episodes_per_run,fa_episodes_per_run_ci_lo,fa_episodes_per_run_ci_hi,A_slow_fa_per_hour,A_slow_one_fa_every,B_sensor_fa_per_hour,B_sensor_one_fa_every,fa_windows_per_run
+gaussian_control,threshold_rule,raw (k=1),1,1,40,6.525,3.6975,9.9881,0.27188,3.7 h,97.875,0.6 min,9.075
+gaussian_control,threshold_rule,"episode_fa<=1 (k=3,m=3)",3,3,40,0.45,0.175,0.8,0.01875,53.3 h,6.75,8.9 min,3.5
+gaussian_control,threshold_rule,strict_window_fa<=1,5,2,40,0.1,0.0,0.225,0.00417,240.0 h,1.5,40.0 min,0.775
+gaussian_control,logistic_regression,raw (k=1),1,1,40,21.075,18.2119,24.2787,0.87812,1.1 h,316.125,0.2 min,48.475
+gaussian_control,logistic_regression,"episode_fa<=1 (k=3,m=3)",3,3,40,0.35,0.175,0.55,0.01458,68.6 h,5.25,11.4 min,2.125
+gaussian_control,logistic_regression,strict_window_fa<=1,3,2,40,0.125,0.0,0.3381,0.00521,192.0 h,1.875,32.0 min,0.4
+gaussian_control,random_forest,raw (k=1),1,1,40,7.1,5.1487,9.2631,0.29583,3.4 h,106.5,0.6 min,13.175
+gaussian_control,random_forest,"episode_fa<=1 (k=3,m=3)",3,3,40,0.45,0.225,0.7,0.01875,53.3 h,6.75,8.9 min,3.975
+gaussian_control,random_forest,strict_window_fa<=1,3,2,40,0.225,0.1,0.3631,0.00937,106.7 h,3.375,17.8 min,0.8
+trough_panel,threshold_rule,raw (k=1),1,1,40,6.525,3.6975,9.9881,0.27188,3.7 h,97.875,0.6 min,9.075
+trough_panel,threshold_rule,"episode_fa<=1 (k=3,m=3)",3,3,40,0.45,0.175,0.8,0.01875,53.3 h,6.75,8.9 min,3.5
+trough_panel,threshold_rule,strict_window_fa<=1,5,2,40,0.1,0.0,0.225,0.00417,240.0 h,1.5,40.0 min,0.775
+trough_panel,logistic_regression,raw (k=1),1,1,40,21.075,18.2119,24.2787,0.87812,1.1 h,316.125,0.2 min,48.475
+trough_panel,logistic_regression,"episode_fa<=1 (k=3,m=3)",3,3,40,0.35,0.175,0.55,0.01458,68.6 h,5.25,11.4 min,2.125
+trough_panel,logistic_regression,strict_window_fa<=1,3,2,40,0.125,0.0,0.3381,0.00521,192.0 h,1.875,32.0 min,0.4
+trough_panel,random_forest,raw (k=1),1,1,40,7.1,5.1487,9.2631,0.29583,3.4 h,106.5,0.6 min,13.175
+trough_panel,random_forest,"episode_fa<=1 (k=3,m=3)",3,3,40,0.45,0.225,0.7,0.01875,53.3 h,6.75,8.9 min,3.975
+trough_panel,random_forest,strict_window_fa<=1,3,2,40,0.225,0.1,0.3631,0.00937,106.7 h,3.375,17.8 min,0.8
+asymmetric,threshold_rule,raw (k=1),1,1,40,6.525,3.6975,9.9881,0.27188,3.7 h,97.875,0.6 min,9.075
+asymmetric,threshold_rule,"episode_fa<=1 (k=3,m=3)",3,3,40,0.45,0.175,0.8,0.01875,53.3 h,6.75,8.9 min,3.5
+asymmetric,threshold_rule,strict_window_fa<=1,5,2,40,0.1,0.0,0.225,0.00417,240.0 h,1.5,40.0 min,0.775
+asymmetric,logistic_regression,raw (k=1),1,1,40,21.075,18.2119,24.2787,0.87812,1.1 h,316.125,0.2 min,48.475
+asymmetric,logistic_regression,"episode_fa<=1 (k=3,m=3)",3,3,40,0.35,0.175,0.55,0.01458,68.6 h,5.25,11.4 min,2.125
+asymmetric,logistic_regression,strict_window_fa<=1,3,2,40,0.125,0.0,0.3381,0.00521,192.0 h,1.875,32.0 min,0.4
+asymmetric,random_forest,raw (k=1),1,1,40,7.1,5.1487,9.2631,0.29583,3.4 h,106.5,0.6 min,13.175
+asymmetric,random_forest,"episode_fa<=1 (k=3,m=3)",3,3,40,0.45,0.225,0.7,0.01875,53.3 h,6.75,8.9 min,3.975
+asymmetric,random_forest,strict_window_fa<=1,3,2,40,0.225,0.1,0.3631,0.00937,106.7 h,3.375,17.8 min,0.8
+two_basin,threshold_rule,raw (k=1),1,1,40,6.525,3.6975,9.9881,0.27188,3.7 h,97.875,0.6 min,9.075
+two_basin,threshold_rule,"episode_fa<=1 (k=3,m=3)",3,3,40,0.45,0.175,0.8,0.01875,53.3 h,6.75,8.9 min,3.5
+two_basin,threshold_rule,strict_window_fa<=1,5,2,40,0.1,0.0,0.225,0.00417,240.0 h,1.5,40.0 min,0.775
+two_basin,logistic_regression,raw (k=1),1,1,40,21.075,18.2119,24.2787,0.87812,1.1 h,316.125,0.2 min,48.475
+two_basin,logistic_regression,"episode_fa<=1 (k=3,m=3)",3,3,40,0.35,0.175,0.55,0.01458,68.6 h,5.25,11.4 min,2.125
+two_basin,logistic_regression,strict_window_fa<=1,3,2,40,0.125,0.0,0.3381,0.00521,192.0 h,1.875,32.0 min,0.4
+two_basin,random_forest,raw (k=1),1,1,40,7.1,5.1487,9.2631,0.29583,3.4 h,106.5,0.6 min,13.175
+two_basin,random_forest,"episode_fa<=1 (k=3,m=3)",3,3,40,0.45,0.225,0.7,0.01875,53.3 h,6.75,8.9 min,3.975
+two_basin,random_forest,strict_window_fa<=1,3,2,40,0.225,0.1,0.3631,0.00937,106.7 h,3.375,17.8 min,0.8
+planar_slope,threshold_rule,raw (k=1),1,1,40,6.525,3.6975,9.9881,0.27188,3.7 h,97.875,0.6 min,9.075
+planar_slope,threshold_rule,"episode_fa<=1 (k=3,m=3)",3,3,40,0.45,0.175,0.8,0.01875,53.3 h,6.75,8.9 min,3.5
+planar_slope,threshold_rule,strict_window_fa<=1,5,2,40,0.1,0.0,0.225,0.00417,240.0 h,1.5,40.0 min,0.775
+planar_slope,logistic_regression,raw (k=1),1,1,40,21.075,18.2119,24.2787,0.87812,1.1 h,316.125,0.2 min,48.475
+planar_slope,logistic_regression,"episode_fa<=1 (k=3,m=3)",3,3,40,0.35,0.175,0.55,0.01458,68.6 h,5.25,11.4 min,2.125
+planar_slope,logistic_regression,strict_window_fa<=1,3,2,40,0.125,0.0,0.3381,0.00521,192.0 h,1.875,32.0 min,0.4
+planar_slope,random_forest,raw (k=1),1,1,40,7.1,5.1487,9.2631,0.29583,3.4 h,106.5,0.6 min,13.175
+planar_slope,random_forest,"episode_fa<=1 (k=3,m=3)",3,3,40,0.45,0.225,0.7,0.01875,53.3 h,6.75,8.9 min,3.975
+planar_slope,random_forest,strict_window_fa<=1,3,2,40,0.225,0.1,0.3631,0.00937,106.7 h,3.375,17.8 min,0.8

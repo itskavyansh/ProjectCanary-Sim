@@ -1,0 +1,118 @@
+{
+  "seed": 20261117,
+  "n_boot": 300,
+  "fa_target_per_normal_run": 1.0,
+  "k_candidates_evaluated": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "m_candidates_evaluated": [
+    1,
+    2,
+    3
+  ],
+  "threshold_rule_val_persistence_choice": {
+    "episode_fa_le_1": {
+      "k": 3,
+      "m": 3,
+      "val_fa_episodes": 1.0,
+      "val_fa_windows": 9.15
+    },
+    "strict_window_fa_le_1": {
+      "k": 5,
+      "m": 2,
+      "val_fa_episodes": 0.2,
+      "val_fa_windows": 0.6
+    }
+  },
+  "episode_matched_operating_points_k3_m3": {
+    "random_forest": {
+      "group_thresholds": {
+        "basin": 0.35994,
+        "vibration": 0.25,
+        "sensor_fault": 0.24,
+        "comm_fault": 0.22
+      },
+      "k": 3,
+      "m": 3,
+      "val_summary": {
+        "basin": 0.35994,
+        "vibration": 0.25,
+        "sensor_fault": 0.24,
+        "comm_fault": 0.22,
+        "val_fa_episodes_per_normal_run": 1.0,
+        "val_fa_windows_per_normal_run": 6.85,
+        "val_exact_detect_rate": 0.68,
+        "val_window_macro_f1": 0.6226,
+        "val_alarm_macro_f1": 0.6092
+      }
+    },
+    "logistic_regression": {
+      "group_thresholds": {
+        "basin": 0.46746,
+        "vibration": 0.25,
+        "sensor_fault": 0.44449,
+        "comm_fault": 0.3539
+      },
+      "k": 3,
+      "m": 3,
+      "val_summary": {
+        "basin": 0.46746,
+        "vibration": 0.25,
+        "sensor_fault": 0.44449,
+        "comm_fault": 0.3539,
+        "val_fa_episodes_per_normal_run": 0.6,
+        "val_fa_windows_per_normal_run": 6.2,
+        "val_exact_detect_rate": 0.6,
+        "val_window_macro_f1": 0.5825,
+        "val_alarm_macro_f1": 0.5724
+      }
+    }
+  },
+  "strict_window_matched_operating_points_k3_m2": {
+    "random_forest": {
+      "group_thresholds": {
+        "basin": 0.38209,
+        "vibration": 0.25,
+        "sensor_fault": 0.28017,
+        "comm_fault": 0.22
+      },
+      "k": 3,
+      "m": 2,
+      "val_summary": {
+        "basin": 0.38209,
+        "vibration": 0.25,
+        "sensor_fault": 0.28017,
+        "comm_fault": 0.22,
+        "val_fa_episodes_per_normal_run": 0.35,
+        "val_fa_windows_per_normal_run": 0.95,
+        "val_exact_detect_rate": 0.64,
+        "val_window_macro_f1": 0.6177,
+        "val_alarm_macro_f1": 0.6014
+      }
+    },
+    "logistic_regression": {
+      "group_thresholds": {
+        "basin": 0.6011,
+        "vibration": 0.25,
+        "sensor_fault": 0.48059,
+        "comm_fault": 0.3539
+      },
+      "k": 3,
+      "m": 2,
+      "val_summary": {
+        "basin": 0.6011,
+        "vibration": 0.25,
+        "sensor_fault": 0.48059,
+        "comm_fault": 0.3539,
+        "val_fa_episodes_per_normal_run": 0.25,
+        "val_fa_windows_per_normal_run": 0.95,
+        "val_exact_detect_rate": 0.54,
+        "val_window_macro_f1": 0.5462,
+        "val_alarm_macro_f1": 0.5231
+      }
+    }
+  }
+}

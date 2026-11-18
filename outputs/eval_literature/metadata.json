@@ -1,0 +1,164 @@
+{
+  "created_utc": "2026-11-18T03:25:47+00:00",
+  "synthetic": true,
+  "git": {
+    "commit": "ad1a7ada4aadc67ef60c02fcf742f957fe7dcc07",
+    "dirty": true,
+    "dirty_file_count": 10
+  },
+  "libraries": {
+    "python": "3.14.0",
+    "numpy": "2.4.2",
+    "pandas": "3.0.1",
+    "scikit-learn": "1.8.0",
+    "PyYAML": "6.0.3",
+    "matplotlib": "3.11.2",
+    "pydantic": "2.12.5",
+    "pytest": "8.4.2"
+  },
+  "configs": {
+    "scenario": {
+      "path": "D:/Github Projects/ProjectCanary-Sim/configs/scenario_default.yaml",
+      "sha256": "405d9de3f20d3997d714453310a22aa753b78482e5b74bc53f279aa033e6ae85",
+      "content": "# Scenario config. ALL RANGES BELOW ARE PLACEHOLDERS (not calibrated to any real site/event).\nseed: 20260001\nmode: gradual            # gradual | rapid\n\nrun:\n  duration_s: 240.0      # simulated seconds (~4 min)\n  sample_rate_hz: 10.0\n  min_hold_fraction: 0.10   # event must finish by (1 - this) of run, so an aftermath exists\n\n# PLACEHOLDER: physical duration the simulated run stands for.\n# compression_factor = physical_duration_s / run.duration_s (stored in metadata)\ntime_compression:\n  gradual: {physical_duration_s: 86400.0}   # PLACEHOLDER: 24 h\n  rapid:   {physical_duration_s: 240.0}     # PLACEHOLDER: real time (factor 1)\n\nranges:                  # PLACEHOLDER ranges\n  centre_radii: 1.5            # x0,y0 uniform in network centre +/- this many network radii (per axis)\n  sigma_radii: [0.4, 1.5]      # sx, uniform, in network radii. MAIN range: hi is CAPPED at 1.5 (engine rejects >1.5)\n  broad_basin_subset: false    # OFF by default. If true, sx upper bound becomes sigma_radii_broad_max (separate subset)\n  sigma_radii_broad_max: 2.5   # only used when broad_basin_subset is true\n  aspect_sy_over_sx: [1.0, 2.0]\n  theta_deg: [0.0, 180.0]      # rotation of the anisotropy axes\n  peak_tilt_deg: [0.05, 3.0]   # log-uniform; max surface slope of the final field, anywhere\n  t_on_frac: [0.20, 0.50]      # fraction of run\n  tau_frac:\n    gradual: [0.40, 0.80]      # fraction of run\n    rapid:   [0.02, 0.08]\n  max_resample: 1000           # (t_on, tau) pair rejected if event would overrun the hold window\n\nmounting:                # PLACEHOLDER magnitudes\n  yaw_error_sd_deg: 1.0\n  level_offset_sd_deg: 0.02\n\ntelemetry_placeholder:   # PLACEHOLDER: not a sensor model\n  tilt_noise_sd_deg: 0.02\n  seed_offset: 7919\n"
+    },
+    "sensor": {
+      "path": "D:/Github Projects/ProjectCanary-Sim/configs/sensor_default.yaml",
+      "sha256": "3f4fc00b91f347d7778ee7e0f877c802d6a1dd96662a047e0e35e1f16ab1e584",
+      "content": "# Sensor / network model config (SYNTHETIC / SIMULATION).\n# Legend:  [PROFILE]     = value is derived from configs/noise_profile.json (real MPU6050/ADS1115 recording)\n#          [USER-SPEC]   = value fixed by the project brief\n#          [PLACEHOLDER] = invented, NOT calibrated to anything. Replace when real data exists.\n# All times are SIMULATED seconds. Sensor timing is NOT rescaled by the time-compression factor.\n\nwindow_s: 1.0                    # telemetry window / IMU sample period. [PROFILE] real sampling_interval_sec = 1.013, rounded\n\nimu:                             # MPU6050\n  noise_multiplier_range: [0.5, 2.0]   # [USER-SPEC] per-run log-uniform multiplier on white noise and drift step\n  white_sd_from_profile: true          # [PROFILE] white sd = mean over NODE_01..03 of continuous_step_noise / sqrt(2*(1-autocorr_lag1)), per field; same value for all 4 nodes\n  node_bias_sd_deg: 0.05               # [PLACEHOLDER] static per-node bias sd, per axis\n  drift_sd_deg_per_sqrt_s: 0.002       # [PLACEHOLDER] random-walk bias drift, sd per sqrt(sim second)\n\npiezo:                           # ADS1115 piezo channel\n  baseline_from_profile: true          # [PROFILE] rms median, lognormal sigma from mean/std, AR(1) phi = lag-1 autocorr, peak/rms and p2p/peak medians\n  node_gain_sd_ln: 0.15                # [PLACEHOLDER] per-node lognormal gain spread\n  crest_scatter_ln: 0.15               # [PLACEHOLDER] window-to-window scatter of peak/rms\n  p2p_scatter_ln: 0.10                 # [PLACEHOLDER] scatter of p2p/peak\n  impulse_rate_per_s: 0.01             # [PLACEHOLDER] background impulse events per node per second\n  impulse_amp_median: 0.03             # [PLACEHOLDER] impulse peak amplitude (same unit as piezo_peak)\n  impulse_amp_sigma_ln: 0.5            # [PLACEHOLDER]\n  impulse_rms_fraction: 0.35           # [PLACEHOLDER] rms contribution of an impulse = fraction * peak amplitude\n  adc_full_scale: 4.096                # ADS1115 +/-4.096 V range (datasheet, gain 1); used only to define \"implausible\" readings\n\nlidar:                           # hub scanning range sensor. ALL FIVE BELOW ARE PLACEHOLDERS\n  sweep_period_s: 20.0                 # [PLACEHOLDER] duration of ONE directional pass (CW, then CCW, alternating); one reading per node per pass\n  range_noise_sd_m: 0.03               # [PLACEHOLDER] Gaussian range noise sd\n  quantisation_m: 0.01                 # [PLACEHOLDER] range quantisation step\n  max_range_m: 40.0                    # [PLACEHOLDER] readings beyond this are \"no return\" (NaN)\n  dwell_s: 1.5                         # [PLACEHOLDER] dwell per node; must be <= sweep_period_s / 4\n\ncomms:                           # LoRa as a packet / loss / latency process ONLY (no RF propagation)\n  node_loss_prob: 0.01                 # [PLACEHOLDER] background per-packet loss, node links\n  hub_loss_prob: 0.005                 # [PLACEHOLDER] background per-packet loss, hub (LiDAR) link\n  latency_median_s: 0.4                # [PLACEHOLDER] lognormal base latency median\n  latency_sigma_ln: 0.4                # [PLACEHOLDER]\n"
+    },
+    "confounder": {
+      "path": "D:/Github Projects/ProjectCanary-Sim/configs/confounder_default.yaml",
+      "sha256": "34aec97414d0d3db4a2f01a6f5df1fd0e691ff409388c5e576d870af96cf2aec",
+      "content": "# Benign hard negatives for class 0 (SYNTHETIC / SIMULATION). ALL VALUES ARE [PLACEHOLDER].\n# Rule: every benign amplitude and duration must be at least `margin_factor` times SMALLER than the\n# minimum the future abnormal-vibration class will use; multi-node spread must be strictly smaller.\n# `abnormal_reference` is a stand-in for that future class; update it when the class is defined.\nmargin_factor: 3.0\n\nbenign:\n  temperature_drift:\n    max_tilt_deg: 0.05           # peak slow drift per node (common-mode by nature: every node feels temperature,\n                                 # so the node-spread margin does NOT apply; amplitude margin does)\n  vibration_burst:               # wind or passing vehicle\n    rms_add_max: 0.02            # added piezo_rms at burst peak (real piezo_rms p99 ~ 0.031)\n    crest: 3.0                   # peak amplitude = crest * rms_add\n    duration_s: [2.0, 8.0]\n    max_nodes: 2                 # wind may touch 2 nodes (2nd at 0.6x); vehicle 1 node\n    tilt_jitter_sd_deg: 0.05     # extra IMU jitter at burst peak\n  harmless_spike:\n    peak_max: 0.06               # piezo_peak spike (real piezo_peak p99 ~ 0.068)\n    tilt_max_deg: 0.2\n    max_count: 3\n    max_nodes: 1\n\nabnormal_reference:              # [PLACEHOLDER] lower bounds for the FUTURE abnormal-vibration class\n  rms_add_min: 0.08\n  duration_s_min: 30.0\n  min_nodes: 3\n  tilt_jitter_sd_deg_min: 0.15\n  peak_min: 0.2\n"
+    },
+    "noise_profile": {
+      "path": "D:/Github Projects/ProjectCanary-Sim/configs/noise_profile.json",
+      "sha256": "85ec0be9b75ca1f2003a0f64ad93806383fa7c9a917dc268c3bdfa9ef85391d9",
+      "content": "{\n  \"source\": \"calibrated_on_prototype_readings\",\n  \"rows_raw_total\": 5835,\n  \"rows_fault_excluded\": 710,\n  \"rows_used_baseline\": 5125,\n  \"field_outliers_excluded_6mad\": {\n    \"tilt_x\": 1784,\n    \"tilt_y\": 1512,\n    \"vibration\": 803,\n    \"distance\": 233,\n    \"piezo_peak\": 29,\n    \"piezo_rms\": 76,\n    \"piezo_peak_to_peak\": 30\n  },\n  \"sampling_interval_sec\": 1.013,\n  \"large_time_gaps_gt_5m\": 61,\n  \"overall\": {\n    \"tilt_x\": {\n      \"mean\": 0.06301706076025142,\n      \"std\": 0.207564,\n      \"p1\": -1.86,\n      \"p99\": 2.63,\n      \"autocorr_lag1\": 0.648,\n      \"median\": 0.03\n    },\n    \"tilt_y\": {\n      \"mean\": -0.01234984777193468,\n      \"std\": 0.16308599999999998,\n      \"p1\": -1.4676,\n      \"p99\": 0.7376000000000021,\n      \"autocorr_lag1\": 0.0377,\n      \"median\": 0.02\n    },\n    \"vibration\": {\n      \"mean\": 0.06495650161962055,\n      \"std\": 0.008895599999999997,\n      \"p1\": 0.025,\n      \"p99\": 0.13,\n      \"autocorr_lag1\": 0.4929,\n      \"median\": 0.062\n    },\n    \"distance\": {\n      \"mean\": 21.30381643499591,\n      \"std\": 8.969729999999998,\n      \"p1\": 2.64,\n      \"p99\": 64.2418,\n      \"autocorr_lag1\": 0.3664,\n      \"median\": 17.2\n    },\n    \"piezo_peak\": {\n      \"mean\": 0.018282202304737517,\n      \"std\": 0.011712539999999999,\n      \"p1\": 0.0008,\n      \"p99\": 0.06752000000000001,\n      \"autocorr_lag1\": 0.6076,\n      \"median\": 0.0129\n    },\n    \"piezo_rms\": {\n      \"mean\": 0.007497683923705723,\n      \"std\": 0.0044478,\n      \"p1\": 0.0004,\n      \"p99\": 0.03096899999999997,\n      \"autocorr_lag1\": 0.7803,\n      \"median\": 0.0075\n    },\n    \"piezo_peak_to_peak\": {\n      \"mean\": 0.020027307692307695,\n      \"std\": 0.0126021,\n      \"p1\": 0.001279,\n      \"p99\": 0.07492500000000009,\n      \"autocorr_lag1\": 0.6549,\n      \"median\": 0.0131\n    },\n    \"fault_fraction\": {\n      \"mpu6050_status\": 0.04044558697514996,\n      \"hc_sr04_status\": 0.11122536418166239,\n      \"ads1115_status\": 0.02964867180805484\n    }\n  },\n  \"nodes\": {\n    \"NODE_01\": {\n      \"tilt_x\": {\n        \"mean\": 0.027500000000000007,\n        \"std\": 0.400302,\n        \"p1\": -1.7545,\n        \"p99\": 1.67,\n        \"autocorr_lag1\": 0.648,\n        \"median\": 0.03\n      },\n      \"tilt_y\": {\n        \"mean\": -0.01010719754977029,\n        \"std\": 0.252042,\n        \"p1\": -1.1072000000000002,\n        \"p99\": 0.6636000000000013,\n        \"autocorr_lag1\": 0.0377,\n        \"median\": 0.01\n      },\n      \"vibration\": {\n        \"mean\": 0.06410799136069115,\n        \"std\": 0.008895599999999997,\n        \"p1\": 0.03603,\n        \"p99\": 0.112,\n        \"autocorr_lag1\": 0.4929,\n        \"median\": 0.062\n      },\n      \"distance\": {\n        \"mean\": 22.2818123054824,\n        \"std\": 12.468666000000002,\n        \"p1\": 2.5631999999999993,\n        \"p99\": 77.86479999999999,\n        \"autocorr_lag1\": 0.3664,\n        \"median\": 17.2\n      },\n      \"piezo_peak\": {\n        \"mean\": 0.026114225941422594,\n        \"std\": 0.014232960000000001,\n        \"p1\": 0.0057,\n        \"p99\": 0.07815200000000004,\n        \"autocorr_lag1\": 0.6076,\n        \"median\": 0.017050000000000003\n      },\n      \"piezo_rms\": {\n        \"mean\": 0.00858448275862069,\n        \"std\": 0.0026686800000000005,\n        \"p1\": 0.0045,\n        \"p99\": 0.017839999999999984,\n        \"autocorr_lag1\": 0.7803,\n        \"median\": 0.0081\n      },\n      \"piezo_peak_to_peak\": {\n        \"mean\": 0.02951725571725572,\n        \"std\": 0.02209074,\n        \"p1\": 0.0057,\n        \"p99\": 0.12201999999999999,\n        \"autocorr_lag1\": 0.6549,\n        \"median\": 0.0258\n      },\n      \"fault_fraction\": {\n        \"mpu6050_status\": 0.013910355486862442,\n        \"hc_sr04_status\": 0.03554868624420402,\n        \"ads1115_status\": 0.0\n      }\n    },\n    \"NODE_02\": {\n      \"tilt_x\": {\n        \"mean\": 0.7602985074626867,\n        \"std\": 0.785778,\n        \"p1\": -3.1790000000000003,\n        \"p99\": 4.5699000000000005,\n        \"autocorr_lag1\": 0.648,\n        \"median\": 0.06\n      },\n      \"tilt_y\": {\n        \"mean\": 0.5713544668587897,\n        \"std\": 0.6671699999999999,\n        \"p1\": -0.6894,\n        \"p99\": 4.2662,\n        \"autocorr_lag1\": 0.0377,\n        \"median\": 0.12\n      },\n      \"vibration\": {\n        \"mean\": 0.04645547073791348,\n        \"std\": 0.016308600000000003,\n        \"p1\": 0.019,\n        \"p99\": 0.129,\n        \"autocorr_lag1\": 0.4929,\n        \"median\": 0.031\n      },\n      \"distance\": {\n        \"mean\": 19.534639175257734,\n        \"std\": 9.325553999999997,\n        \"p1\": 4.8172,\n        \"p99\": 60.90079999999981,\n        \"autocorr_lag1\": 0.3664,\n        \"median\": 18.66\n      },\n      \"piezo_peak\": {\n        \"mean\": 0.006677377049180328,\n        \"std\": 0.00459606,\n        \"p1\": 0.0006039999999999999,\n        \"p99\": 0.021096,\n        \"autocorr_lag1\": 0.6076,\n        \"median\": 0.0043\n      },\n      \"piezo_rms\": {\n        \"mean\": 0.0044786885245901645,\n        \"std\": 0.00252042,\n        \"p1\": 0.0003,\n        \"p99\": 0.016891999999999994,\n        \"autocorr_lag1\": 0.7803,\n        \"median\": 0.0022\n      },\n      \"piezo_peak_to_peak\": {\n        \"mean\": 0.007379344262295083,\n        \"std\": 0.00563388,\n        \"p1\": 0.0010040000000000001,\n        \"p99\": 0.021771999999999986,\n        \"autocorr_lag1\": 0.6549,\n        \"median\": 0.0056\n      },\n      \"fault_fraction\": {\n        \"mpu6050_status\": 0.1657088122605364,\n        \"hc_sr04_status\": 0.4674329501915709,\n        \"ads1115_status\": 0.1657088122605364\n      }\n    },\n    \"NODE_03\": {\n      \"tilt_x\": {\n        \"mean\": 15.759020408163266,\n        \"std\": 15.848994000000001,\n        \"p1\": 3.1444,\n        \"p99\": 28.02,\n        \"autocorr_lag1\": 0.648,\n        \"median\": 14.46\n      },\n      \"tilt_y\": {\n        \"mean\": 8.589551020408164,\n        \"std\": 6.404832,\n        \"p1\": 2.46,\n        \"p99\": 14.01,\n        \"autocorr_lag1\": 0.0377,\n        \"median\": 8.39\n      },\n      \"vibration\": {\n        \"mean\": 0.18255921052631577,\n        \"std\": 0.1289862,\n        \"p1\": 0.04561,\n        \"p99\": 0.88743,\n        \"autocorr_lag1\": 0.4929,\n        \"median\": 0.112\n      },\n      \"distance\": {\n        \"mean\": 17.2010612244898,\n        \"std\": 1.4677739999999977,\n        \"p1\": 11.99,\n        \"p99\": 20.9036,\n        \"autocorr_lag1\": 0.3664,\n        \"median\": 19.48\n      },\n      \"piezo_peak\": {\n        \"mean\": 0.018282202304737517,\n        \"std\": 0.011712539999999999,\n        \"p1\": 0.0008,\n        \"p99\": 0.06752000000000001,\n        \"autocorr_lag1\": 0.6076,\n        \"median\": 0.0129\n      },\n      \"piezo_rms\": {\n        \"mean\": 0.007497683923705723,\n        \"std\": 0.0044478,\n        \"p1\": 0.0004,\n        \"p99\": 0.03096899999999997,\n        \"autocorr_lag1\": 0.7803,\n        \"median\": 0.0075\n      },\n      \"piezo_peak_to_peak\": {\n        \"mean\": 0.020027307692307695,\n        \"std\": 0.0126021,\n        \"p1\": 0.001279,\n        \"p99\": 0.07492500000000009,\n        \"autocorr_lag1\": 0.6549,\n        \"median\": 0.0131\n      },\n      \"fault_fraction\": {\n        \"mpu6050_status\": 0.0,\n        \"hc_sr04_status\": 0.0,\n        \"ads1115_status\": 0.0\n      }\n    },\n    \"NODE_04\": {\n      \"tilt_x\": {\n        \"mean\": 0.06301706076025142,\n        \"std\": 0.207564,\n        \"p1\": -1.86,\n        \"p99\": 2.63,\n        \"autocorr_lag1\": 0.648,\n        \"median\": 0.03\n      },\n      \"tilt_y\": {\n        \"mean\": -0.01234984777193468,\n        \"std\": 0.16308599999999998,\n        \"p1\": -1.4676,\n        \"p99\": 0.7376000000000021,\n        \"autocorr_lag1\": 0.0377,\n        \"median\": 0.02\n      },\n      \"vibration\": {\n        \"mean\": 0.06495650161962055,\n        \"std\": 0.008895599999999997,\n        \"p1\": 0.025,\n        \"p99\": 0.13,\n        \"autocorr_lag1\": 0.4929,\n        \"median\": 0.062\n      },\n      \"distance\": {\n        \"mean\": 21.30381643499591,\n        \"std\": 8.969729999999998,\n        \"p1\": 2.64,\n        \"p99\": 64.2418,\n        \"autocorr_lag1\": 0.3664,\n        \"median\": 17.2\n      },\n      \"piezo_peak\": {\n        \"mean\": 0.018282202304737517,\n        \"std\": 0.011712539999999999,\n        \"p1\": 0.0008,\n        \"p99\": 0.06752000000000001,\n        \"autocorr_lag1\": 0.6076,\n        \"median\": 0.0129\n      },\n      \"piezo_rms\": {\n        \"mean\": 0.007497683923705723,\n        \"std\": 0.0044478,\n        \"p1\": 0.0004,\n        \"p99\": 0.03096899999999997,\n        \"autocorr_lag1\": 0.7803,\n        \"median\": 0.0075\n      },\n      \"piezo_peak_to_peak\": {\n        \"mean\": 0.020027307692307695,\n        \"std\": 0.0126021,\n        \"p1\": 0.001279,\n        \"p99\": 0.07492500000000009,\n        \"autocorr_lag1\": 0.6549,\n        \"median\": 0.0131\n      },\n      \"fault_fraction\": {\n        \"mpu6050_status\": 0.04044558697514996,\n        \"hc_sr04_status\": 0.11122536418166239,\n        \"ads1115_status\": 0.02964867180805484\n      }\n    }\n  },\n  \"continuous_step_noise\": {\n    \"NODE_01\": {\n      \"tilt_x\": 0.20756400000000017,\n      \"tilt_y\": 0.192738,\n      \"vibration\": 0.007413000000000006,\n      \"distance\": 0.41512800000000166,\n      \"piezo_peak\": 0.0020756399999999975,\n      \"piezo_rms\": 0.000741299999999998,\n      \"piezo_peak_to_peak\": 0.002372160000000006\n    },\n    \"NODE_02\": {\n      \"tilt_x\": 0.17791200000000001,\n      \"tilt_y\": 0.14826000000000078,\n      \"vibration\": 0.0044478000000000035,\n      \"distance\": 0.014825999999999683,\n      \"piezo_peak\": 0.0005930399999999964,\n      \"piezo_rms\": 0.0002965199999999999,\n      \"piezo_peak_to_peak\": 0.000593039999999999\n    },\n    \"NODE_03\": {\n      \"tilt_x\": 0.200151,\n      \"tilt_y\": 0.19273799999999916,\n      \"vibration\": 0.013343399999999981,\n      \"distance\": 0.16308599999999915,\n      \"piezo_peak\": 0.011712539999999999,\n      \"piezo_rms\": 0.0044478,\n      \"piezo_peak_to_peak\": 0.0126021\n    }\n  }\n}"
+    },
+    "dataset": {
+      "path": "D:/Github Projects/ProjectCanary-Sim/configs/dataset_default.yaml",
+      "sha256": "6b5dfb9e373fb4b054a192ed16c20760d6b153ccb16180ec3165ef28ab96373e",
+      "content": "# Dataset and windowing configuration (SYNTHETIC / SIMULATION).\n# All splits are strictly AT THE RUN LEVEL (never by window).\n# [USER-SPEC] = required by brief; [PLACEHOLDER] = synthetic design parameter.\n\nmaster_seed: 20261117\n\nwindowing:\n  window_s: 5.0                  # [USER-SPEC] 5 s simulated window\n  overlap: 0.5                   # [USER-SPEC] 50% overlap (step = 2.5 s)\n  min_label_overlap: 0.5         # [USER-SPEC] >=50% overlap gets event/fault class; (0, 0.5) -> \"transition\"\n  long_horizon_windows: 12       # [USER-SPEC] slope of window mean tilt magnitude over last N windows\n  lead_in_baseline_s: 30.0       # [PLACEHOLDER] observable lead-in window for feature baseline subtraction\n  impulse_peak_thresh: 0.035     # [PLACEHOLDER] piezo_peak threshold to count a sample as an impulse\n\nsplits:                          # [USER-SPEC] runs per class in the headline splits\n  train: 60\n  val: 20\n  test: 20\n\nshifted_test:                    # [USER-SPEC] shifted-noise test set (new seeds, never used in train/val)\n  runs_per_class: 15             # [PLACEHOLDER] 15 runs x 6 classes = 90 runs\n  noise_multiplier_range: [1.5, 2.0]   # [USER-SPEC]\n  node_bias_sd_deg: 0.12         # [PLACEHOLDER] shifted per-node static bias sd (vs 0.05 nominal)\n  confounder_scale: 0.85         # [PLACEHOLDER] different confounder amplitude scale (<=1.0 preserves margin)\n  confounder_n_bursts: 2         # [PLACEHOLDER] fixed 2 bursts per run\n\nstress_set:                      # [USER-SPEC] combined conditions (~100 runs), reported separately\n  n_runs: 100\n  combos:\n    - [gradual, sensor_fault]\n    - [gradual, comm_fault]\n    - [rapid, sensor_fault]\n    - [rapid, comm_fault]\n    - [abnormal_vibration, comm_fault]\n    - [abnormal_vibration, sensor_fault]\n    - [sensor_fault, comm_fault]\n\nbroad_basin_subset:              # [USER-SPEC] gradual & rapid with broad_basin_subset: true, reported separately\n  runs_per_class: 20             # 20 gradual + 20 rapid = 40 runs\n\nstratification:                  # [USER-SPEC] stratify gradual & rapid peak_tilt_deg across [0.05, 3.0]\n  enabled: true                  # log-spaced strata within each split so weak events (SNR < 1) are guaranteed\n\nabnormal_vibration:              # [PLACEHOLDER] strictly above confounder_default.yaml abnormal_reference\n  rms_add_range: [0.09, 0.22]          # >= 0.08 min (confounder max 0.02 * 3 = 0.06)\n  duration_s_range: [35.0, 90.0]       # >= 30.0 s min (confounder max 8.0 * 3 = 24.0)\n  min_nodes: 3                         # >= 3 nodes (confounder max 2)\n  tilt_jitter_sd_deg_range: [0.16, 0.35]  # >= 0.15 deg min (confounder max 0.05 * 3 = 0.15)\n  impulse_peak_range: [0.22, 0.55]     # >= 0.20 min (confounder max 0.06 * 3 = 0.18)\n  impulse_rate_per_s: 0.35\n  crest: 3.2\n  start_frac_range: [0.20, 0.45]\n"
+    },
+    "literature_checks": {
+      "path": "configs/literature_checks.yaml",
+      "sha256": "2f3433de110055679f306369a9efd15df101b1ecaf787779384f485b924ee044",
+      "content": "# Literature-basis sensitivity checks config (SYNTHETIC / SIMULATION).\n# All grids and ranges without a specific site calibration are marked PLACEHOLDER.\nseed_base: 4000000001   # disjoint from outputs/datasets_v3 (~2.026e9) and outputs/eval_shape_mismatch (~3.0e9)\n\n# Part B1: High-tilt sensitivity arms (PLACEHOLDER early-warning vs full longwall tilt ranges)\nhigh_tilt_arms:\n  high_tilt_3_6:\n    peak_tilt_deg: [3.0, 6.0]     # upper half of Ashton measured longwall tilts (0.7 to 5.9 deg)\n    gradual_runs: 30\n    rapid_runs: 30\n    seed_offset_gradual: 0\n    seed_offset_rapid: 100\n  high_tilt_6_12:\n    peak_tilt_deg: [6.0, 12.0]    # extreme / post-failure tilt regime above measured longwall range\n    gradual_runs: 30\n    rapid_runs: 30\n    seed_offset_gradual: 200\n    seed_offset_rapid: 300\n\n# Part B2: Realistic-depth Knothe sigma grid (PLACEHOLDER grid until cited Indian coalfield tan(beta) is filled in)\n# sigma = H / (tan_beta * sqrt(2 * pi)), converted to network radii (1 radius = 10 * sqrt(2) = 14.1421356 m)\nrealistic_depth_grid:\n  depths_m: [50.0, 100.0, 200.0, 300.0]         # PLACEHOLDER depth H (m)\n  tan_beta_values: [1.5, 2.0, 2.5]              # PLACEHOLDER Knothe influence tangent tan(beta)\n  main_sigma_cap_radii: 1.5\n  gradual_runs_per_cell: 10\n  rapid_runs_per_cell: 10\n  peak_tilt_deg: [0.05, 3.0]                    # same log-stratified peak tilt range as control\n  seed_offset_base: 1000                        # cell k gets seed_base + 1000 + k * 100\n\n# Part C: Timescale audit reference (DERIVED, ORDER OF MAGNITUDE - NOT A CITED VALUE)\ntimescale_audit:\n  derived_reference_tilt_mm_per_m: 60.0         # DERIVED, ORDER OF MAGNITUDE (~3.4 deg)\n  derived_reference_duration_days: 30.0         # ~30 days active movement (Jeran & Trevits USBM RI 9552)\n  derived_reference_rate_deg_per_day: 0.1       # DERIVED, ORDER OF MAGNITUDE (~3.4 deg / 30 days ~ 0.1 deg/day)\n  alternative_compression_factors: [360.0, 10000.0, 10800.0, 30000.0]  # 10800x = 30 days per 240 s run\n"
+    }
+  },
+  "files": {
+    "high_tilt_sensitivity.png": {
+      "sha256": "ee4cf182ed41d91ab8e9c9176ada5d169153b5752d7f62569cd6b378ef755ea5",
+      "bytes": 150158
+    },
+    "impossible_value_check_report.csv": {
+      "sha256": "fb5bb963557e2ddd9210351c9ac689ae06777792e097a59450c0cc185cdfab3b",
+      "bytes": 1019
+    },
+    "impossible_value_check_report.md": {
+      "sha256": "0140933bd062f151d9e387f466cb77e2d3873ca3e958b173dc9721c89d3ad1a7",
+      "bytes": 1448
+    },
+    "literature_convergence_distributions.csv": {
+      "sha256": "58ac8fc05fc5c692a5bd3d182f857078badee870e73a7282002457c723b9cab6",
+      "bytes": 4934
+    },
+    "literature_convergence_distributions.md": {
+      "sha256": "e1f42b3521087ffdf5a43efeddbc92142cab25a930dd67feecda11916ec96463",
+      "bytes": 3255
+    },
+    "literature_detection_rates.csv": {
+      "sha256": "eeafaa27722baeb9df00785bf89a19ce0cd38e4dc6f16368062a4237dcf83048",
+      "bytes": 28395
+    },
+    "literature_detection_rates.md": {
+      "sha256": "7bffb035e084bbf5bbde95b17a7047e1c1499b774304ec33cd16e7325f332c8f",
+      "bytes": 25846
+    },
+    "literature_gradual_sensor_fault_confusion.csv": {
+      "sha256": "f81c9ff0f4c24ab6f93ad64285f2d54a0dddeab64ae37acf560587970501e71b",
+      "bytes": 10698
+    },
+    "literature_gradual_sensor_fault_confusion.md": {
+      "sha256": "116e4a214505eda171da69d201f081b1e6843711e824fe188c5482cb6f3e9b51",
+      "bytes": 9438
+    },
+    "literature_recall_by_snr.csv": {
+      "sha256": "f8b9c693b6494e0bbaba9f82a1794bd81d7d0886703b54c3d07a8b81b0fc428c",
+      "bytes": 96223
+    },
+    "manifest.csv": {
+      "sha256": "f21a4b1877e7a154b921922c236f0c777192300b4f31efee5ae665076b74794c",
+      "bytes": 479771
+    },
+    "normal_false_alarms_with_alt_compression.csv": {
+      "sha256": "426f1eb913692af456c69a5a2047779c106c63887a6d94fe07c09462e27fe28f",
+      "bytes": 1973
+    },
+    "normal_false_alarms_with_alt_compression.md": {
+      "sha256": "3759282409169fa28acef59d620cca627403c11c51dbdb2976bd02b81cf90a3c",
+      "bytes": 2064
+    },
+    "realistic_depth_sensitivity.png": {
+      "sha256": "a68e0c4b42f3418376ad8689820039b55bb8da34f6053490534e8b08e60644db",
+      "bytes": 352707
+    },
+    "realistic_depth_sigma_grid.csv": {
+      "sha256": "153a072c5c4bbf5251f3940e6cd619aed24f0b8d8dd61ac0990004f2078219e6",
+      "bytes": 751
+    },
+    "realistic_depth_sigma_grid.md": {
+      "sha256": "927069493046d3ea01d0971b77e9a4ab784ab6321d5f35aecdc5c70509243725",
+      "bytes": 1417
+    },
+    "timescale_audit_gradual_rates.png": {
+      "sha256": "37ebb880b4831cf9fa3653fcf0b25f12e995aeb8c02af98f091ed4623745ceb5",
+      "bytes": 158332
+    },
+    "timescale_audit_gradual_runs.csv": {
+      "sha256": "13a9baaf9b86188cd331a757e75d0cac0c7750b0a63f3930057b4fb1d53f0814",
+      "bytes": 27267
+    },
+    "timescale_audit_summary.csv": {
+      "sha256": "cf4200e16849b82927a942a497853ee7b94d803f17651193bea5493f1bebc1ce",
+      "bytes": 1129
+    },
+    "timescale_audit_summary.md": {
+      "sha256": "5f24e9c9b86d5324827b9597f2576731bf7c0b7959381ba213632512b51161a7",
+      "bytes": 1634
+    },
+    "window_features.csv": {
+      "sha256": "3cb57094d62c8a68d22d25189b95fd33adb5ce17900a4fdda45122ff8f040d57",
+      "bytes": 51736906
+    },
+    "window_labels.csv": {
+      "sha256": "af9383b940a9631c285e330b5267e9daf8c86dc415749ba20b33b2f86161eaf4",
+      "bytes": 4282647
+    }
+  },
+  "extra": {
+    "seed": 20261117,
+    "n_boot": 300,
+    "runtime_s": 116.8,
+    "frozen_hashes_verified": true,
+    "frozen_sha256": {
+      "canary_sim/schema.py": "3feef18189420a441bf73930ed83fe0c7c252fc2b0b09d9c248652bc34405e7a",
+      "canary_sim/engine.py": "b832e1ed97094cf37e885f3df7c376c853023ee404f60f84ec05d54ab093ad1f",
+      "canary_sim/features.py": "bda6c3d71f37ebb99bdfbeb285480182c77b25b9cebf60cabef149b53322e391",
+      "canary_sim/labels.py": "49aa215dc3be0903fafbaaf0f6216343b98796ef5fd48fc1a8dee37fb09d6f09",
+      "canary_sim/models.py": "46944d64cee6c073c48d07c7a573d06f349865533432854b1dec17a7f14906aa",
+      "canary_sim/alarm.py": "1b0dbcd681435273ebc2557b8726c2125b029bcd7f5ac62e9c2f0b559a932b4c",
+      "configs/scenario_default.yaml": "405d9de3f20d3997d714453310a22aa753b78482e5b74bc53f279aa033e6ae85",
+      "configs/sensor_default.yaml": "3f4fc00b91f347d7778ee7e0f877c802d6a1dd96662a047e0e35e1f16ab1e584",
+      "configs/confounder_default.yaml": "34aec97414d0d3db4a2f01a6f5df1fd0e691ff409388c5e576d870af96cf2aec",
+      "configs/dataset_default.yaml": "6b5dfb9e373fb4b054a192ed16c20760d6b153ccb16180ec3165ef28ab96373e",
+      "outputs/datasets_v3/manifest.csv": "4553387eaa27d9d895b02ac94b447d1d66ae4759c9a3ccf54de2e1dcb02d0d3a",
+      "outputs/eval_v3/trained_models_v3.pkl": "9183b4bb7f0ddd0706c69ad464a7ea6075b068340822dd7b76c618bda34108a3",
+      "outputs/eval_v3/operating_points_v3.pkl": "1045d81399f5fa16a6158d16032e75ef85ca2016f6ed2cf471c958fdc2e439be",
+      "outputs/eval_extras/false_alarms_per_hour.csv": "a80c5c103de7eb5d28a7e62452b40d7c44ffb2614010ac2716c3e5c72e35809e",
+      "outputs/eval_extras_v2/false_alarms_per_hour_both_definitions.csv": "f791a4e913a8a5b3d4d3af7f8cf8b365ecad4972e8961c39a2de52022057d9fd"
+    }
+  }
+}

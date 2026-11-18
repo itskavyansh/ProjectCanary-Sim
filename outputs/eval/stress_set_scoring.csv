@@ -1,0 +1,4 @@
+model,primary_macro_f1,primary_macro_f1_ci_lo,primary_macro_f1_ci_hi,set_match_accuracy_all,n_multi_condition_windows,primary_accuracy_on_multi_windows,set_match_accuracy_on_multi_windows
+threshold_rule,0.4676,0.4286,0.5077,0.7007,2043,0.1865,0.8292
+logistic_regression,0.4593,0.4223,0.4975,0.5875,2043,0.2878,0.7915
+random_forest,0.497,0.4583,0.5379,0.6551,2043,0.279,0.837

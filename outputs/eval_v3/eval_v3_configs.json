@@ -1,0 +1,179 @@
+{
+  "seed": 20261117,
+  "n_model_features_v3": 81,
+  "new_v3_features": [
+    "dir_win_convergence_align_cos",
+    "dir_win_convergence_weighted_cos",
+    "dir_win_convergence_residual_m",
+    "dir_convergence_align_cos",
+    "dir_convergence_weighted_cos",
+    "dir_convergence_residual_m",
+    "coherence_trailing_wx",
+    "coherence_trailing_wy",
+    "coherence_trailing_signed_mean",
+    "coherence_trailing_mag"
+  ],
+  "threshold_rule_v3": {
+    "comm_missing_frac_net_th": 0.12,
+    "comm_max_burst_len_th": 2.0,
+    "comm_latency_max_s_th": 3.0,
+    "piezo_rms_network_mean_th": 0.02803,
+    "piezo_nodes_with_impulse_th": 3.0,
+    "hub_common_mode_abs_m_th": 0.21148,
+    "hub_residual_abs_max_m_th": 0.2406,
+    "imu_implausible_tilt_deg_th": 3.5,
+    "imu_stuck_std_deg_th": 0.0001,
+    "imu_spike_std_deg_th": 0.82318,
+    "imu_single_node_ratio_th": 2.4,
+    "dir_convergence_residual_m_th": 17.60629,
+    "basin_tilt_max_deg_th": 0.60727,
+    "basin_tilt_median_deg_th": 0.44616,
+    "rapid_win_slope_deg_s_th": 0.11409,
+    "gradual_long_slope_deg_s_th": 0.00575
+  },
+  "logistic_regression_v3": {
+    "C": 5.0,
+    "class_weight": "balanced",
+    "max_iter": 1000,
+    "random_state": 20261117
+  },
+  "random_forest_v3": {
+    "best_params": {
+      "n_estimators": 200,
+      "max_depth": 20,
+      "min_samples_leaf": 3,
+      "class_weight": "balanced",
+      "random_state": 20261117
+    },
+    "val_grid": [
+      {
+        "n_estimators": 120,
+        "max_depth": 12,
+        "min_samples_leaf": 1,
+        "val_macro_f1": 0.65996
+      },
+      {
+        "n_estimators": 120,
+        "max_depth": 12,
+        "min_samples_leaf": 3,
+        "val_macro_f1": 0.65514
+      },
+      {
+        "n_estimators": 120,
+        "max_depth": 20,
+        "min_samples_leaf": 1,
+        "val_macro_f1": 0.66601
+      },
+      {
+        "n_estimators": 120,
+        "max_depth": 20,
+        "min_samples_leaf": 3,
+        "val_macro_f1": 0.66786
+      },
+      {
+        "n_estimators": 200,
+        "max_depth": 12,
+        "min_samples_leaf": 1,
+        "val_macro_f1": 0.66381
+      },
+      {
+        "n_estimators": 200,
+        "max_depth": 12,
+        "min_samples_leaf": 3,
+        "val_macro_f1": 0.65997
+      },
+      {
+        "n_estimators": 200,
+        "max_depth": 20,
+        "min_samples_leaf": 1,
+        "val_macro_f1": 0.66695
+      },
+      {
+        "n_estimators": 200,
+        "max_depth": 20,
+        "min_samples_leaf": 3,
+        "val_macro_f1": 0.67129
+      }
+    ]
+  },
+  "operating_points_episode_fa_le_1_k3_m3": {
+    "random_forest": {
+      "group_thresholds": {
+        "basin": 0.34337,
+        "vibration": 0.25,
+        "sensor_fault": 0.29415,
+        "comm_fault": 0.22
+      },
+      "val_summary": {
+        "basin": 0.34337,
+        "vibration": 0.25,
+        "sensor_fault": 0.29415,
+        "comm_fault": 0.22,
+        "val_fa_episodes_per_normal_run": 1.0,
+        "val_fa_windows_per_normal_run": 6.8,
+        "val_exact_detect_rate": 0.76,
+        "val_window_macro_f1": 0.6676,
+        "val_alarm_macro_f1": 0.6552
+      }
+    },
+    "logistic_regression": {
+      "group_thresholds": {
+        "basin": 0.48106,
+        "vibration": 0.25,
+        "sensor_fault": 0.54078,
+        "comm_fault": 0.46725
+      },
+      "val_summary": {
+        "basin": 0.48106,
+        "vibration": 0.25,
+        "sensor_fault": 0.54078,
+        "comm_fault": 0.46725,
+        "val_fa_episodes_per_normal_run": 0.85,
+        "val_fa_windows_per_normal_run": 7.65,
+        "val_exact_detect_rate": 0.66,
+        "val_window_macro_f1": 0.6077,
+        "val_alarm_macro_f1": 0.5922
+      }
+    }
+  },
+  "operating_points_strict_window_fa_le_1_k3_m2": {
+    "random_forest": {
+      "group_thresholds": {
+        "basin": 0.45254,
+        "vibration": 0.25,
+        "sensor_fault": 0.2809,
+        "comm_fault": 0.22
+      },
+      "val_summary": {
+        "basin": 0.45254,
+        "vibration": 0.25,
+        "sensor_fault": 0.2809,
+        "comm_fault": 0.22,
+        "val_fa_episodes_per_normal_run": 0.4,
+        "val_fa_windows_per_normal_run": 0.8,
+        "val_exact_detect_rate": 0.7,
+        "val_window_macro_f1": 0.6572,
+        "val_alarm_macro_f1": 0.6486
+      }
+    },
+    "logistic_regression": {
+      "group_thresholds": {
+        "basin": 0.583,
+        "vibration": 0.25,
+        "sensor_fault": 0.57501,
+        "comm_fault": 0.46725
+      },
+      "val_summary": {
+        "basin": 0.583,
+        "vibration": 0.25,
+        "sensor_fault": 0.57501,
+        "comm_fault": 0.46725,
+        "val_fa_episodes_per_normal_run": 0.3,
+        "val_fa_windows_per_normal_run": 0.95,
+        "val_exact_detect_rate": 0.61,
+        "val_window_macro_f1": 0.5743,
+        "val_alarm_macro_f1": 0.5461
+      }
+    }
+  }
+}

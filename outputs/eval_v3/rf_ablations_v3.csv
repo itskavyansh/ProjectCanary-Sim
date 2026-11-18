@@ -1,0 +1,8 @@
+group_removed,n_features_kept,macro_f1_all_snr,delta_macro_f1_all_snr,macro_f1_snr_gt_2,delta_macro_f1_snr_gt_2,gradual_recall_snr_gt_2,sensor_fault_recall_snr_gt_2,gradual_sf_confusions_snr_gt_2
+none (full_model),81,0.6385,0.0,0.6722,0.0,0.279,0.3856,39
+direction,68,0.6367,-0.0018,0.6692,-0.003,0.4676,0.4162,111
+coherence,73,0.6411,0.0026,0.6766,0.0044,0.2896,0.4,37
+piezo,62,0.4936,-0.1449,0.5445,-0.1277,0.2685,0.4018,39
+hub,66,0.6063,-0.0322,0.6506,-0.0216,0.276,0.218,33
+comm,72,0.5933,-0.0452,0.6307,-0.0415,0.2911,0.3604,36
+long_horizon,76,0.6319,-0.0067,0.669,-0.0032,0.2609,0.3676,42

@@ -1,0 +1,12 @@
+arm,n_runs,n_windows,max_window_node_mean_deg,median_run_max_node_mean_deg,runs_exceeding_15deg_normal_limit,windows_exceeding_15deg_normal_limit,runs_exceeding_3p5deg_threshold_rule_implausible,windows_exceeding_3p5deg_threshold_rule_implausible,validation_check_passed,validation_check_messages
+gaussian_control,60,5700,3.0849,0.7744,0,0,0,0,True,NONE
+high_tilt_3_6,60,5700,6.0248,3.5932,0,0,30,1420,False,"basin peak_tilt_deg outside configured [0.05, 3.0] deg"
+high_tilt_6_12,60,5700,10.6961,7.4513,0,0,60,3034,False,"basin peak_tilt_deg outside configured [0.05, 3.0] deg"
+depth_all_gt_1p5,140,13300,3.2009,0.736,0,0,0,0,True,NONE
+H100_tanB1p5,20,1900,3.2009,0.7966,0,0,0,0,True,NONE
+H200_tanB1p5,20,1900,2.3241,0.7831,0,0,0,0,True,NONE
+H200_tanB2p0,20,1900,2.6365,0.7371,0,0,0,0,True,NONE
+H200_tanB2p5,20,1900,3.1098,0.7025,0,0,0,0,True,NONE
+H300_tanB1p5,20,1900,2.4518,0.6775,0,0,0,0,True,NONE
+H300_tanB2p0,20,1900,2.1805,0.7529,0,0,0,0,True,NONE
+H300_tanB2p5,20,1900,1.8517,0.7114,0,0,0,0,True,NONE

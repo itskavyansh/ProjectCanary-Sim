@@ -1,0 +1,91 @@
+{
+  "simulation_id": "sim_gradual_20260001",
+  "synthetic": true,
+  "telemetry_seed": 20260001,
+  "noise_multiplier": 0.7571884217202987,
+  "window_s": 1.0,
+  "lead_in_end_s": 93.1,
+  "lidar_baseline_m": {
+    "NODE_01": 14.13,
+    "NODE_02": 14.135000000000002,
+    "NODE_03": 14.135000000000002,
+    "NODE_04": 14.16
+  },
+  "faults": [
+    {
+      "type": "hub_self_motion",
+      "node": "HUB",
+      "start_s": 132.0,
+      "end_s": 204.0,
+      "seed": 20260001,
+      "params": {
+        "shift_m": 0.3,
+        "ramp_s": 3.0
+      }
+    }
+  ],
+  "confounders": [],
+  "sensor_config": {
+    "window_s": 1.0,
+    "imu": {
+      "noise_multiplier_range": [
+        0.5,
+        2.0
+      ],
+      "white_sd_from_profile": true,
+      "node_bias_sd_deg": 0.05,
+      "drift_sd_deg_per_sqrt_s": 0.002
+    },
+    "piezo": {
+      "baseline_from_profile": true,
+      "node_gain_sd_ln": 0.15,
+      "crest_scatter_ln": 0.15,
+      "p2p_scatter_ln": 0.1,
+      "impulse_rate_per_s": 0.01,
+      "impulse_amp_median": 0.03,
+      "impulse_amp_sigma_ln": 0.5,
+      "impulse_rms_fraction": 0.35,
+      "adc_full_scale": 4.096
+    },
+    "lidar": {
+      "sweep_period_s": 20.0,
+      "range_noise_sd_m": 0.03,
+      "quantisation_m": 0.01,
+      "max_range_m": 40.0,
+      "dwell_s": 1.5
+    },
+    "comms": {
+      "node_loss_prob": 0.01,
+      "hub_loss_prob": 0.005,
+      "latency_median_s": 0.4,
+      "latency_sigma_ln": 0.4
+    }
+  },
+  "profile_derived": {
+    "source": "calibrated_on_prototype_readings",
+    "imu_white_sd_source": {
+      "formula": "mean over NODE_01..NODE_03 of continuous_step_noise / sqrt(2*(1-autocorr_lag1)); /sqrt(2) if autocorr_lag1 missing",
+      "autocorr_lag1": {
+        "tilt_x": 0.648,
+        "tilt_y": 0.0377
+      },
+      "nodes_in_profile": [
+        "NODE_01",
+        "NODE_02",
+        "NODE_03"
+      ],
+      "applied_to_nodes": "all four corner nodes (NODE_04 uses the same pooled value)"
+    },
+    "sampling_interval_s": 1.013,
+    "imu_white_sd_deg": {
+      "tilt_x": 0.23265559823005358,
+      "tilt_y": 0.12824339337162272
+    },
+    "piezo_rms_median": 0.0075,
+    "piezo_rms_sigma_ln": 0.5491094485490284,
+    "piezo_rms_phi": 0.7803,
+    "piezo_crest_median": 1.72,
+    "piezo_p2p_over_peak_median": 1.0155038759689923
+  },
+  "note": "Telemetry is separate from the frozen state timeline; ground-truth faults are listed only here."
+}

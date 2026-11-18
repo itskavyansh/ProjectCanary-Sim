@@ -1,0 +1,51 @@
+# Gradual vs Sensor_Fault Confusion Counts by Shape (SYNTHETIC / SIMULATION)
+
+> **SYNTHETIC / SIMULATION** — Model-mismatch stress test on synthetic mathematical surfaces; NOT field data and NOT validated on real data.
+
+| shape | model | regime | gradual windows | win: gradual->sensor_fault [95% CI] (rate) | alarm: gradual->sensor_fault [95% CI] | win: gradual->gradual | win: gradual->rapid | win: gradual->normal |
+|---|---|---|---|---|---|---|---|---|
+| gaussian_control | threshold_rule | raw (k=1) | 2008 | **80** [0.0, 239.5] (0.040) | **80** [0.0, 213.0] | 377 | 307 | 1240 |
+| gaussian_control | threshold_rule | episode_fa<=1 (k=3,m=3) | 2008 | **80** [0.0, 239.5] (0.040) | **78** [0.0, 206.0] | 377 | 307 | 1240 |
+| gaussian_control | threshold_rule | strict_window_fa<=1 | 2008 | **80** [0.0, 239.5] (0.040) | **74** [0.0, 196.0] | 377 | 307 | 1240 |
+| gaussian_control | logistic_regression | raw (k=1) | 2008 | **148** [67.4, 253.6] (0.074) | **148** [75.0, 235.0] | 657 | 683 | 509 |
+| gaussian_control | logistic_regression | episode_fa<=1 (k=3,m=3) | 2008 | **15** [4.0, 31.5] (0.007) | **0** [0.0, 0.0] | 351 | 364 | 1276 |
+| gaussian_control | logistic_regression | strict_window_fa<=1 | 2008 | **8** [0.0, 18.0] (0.004) | **0** [0.0, 0.0] | 135 | 172 | 1691 |
+| gaussian_control | random_forest | raw (k=1) | 2008 | **36** [2.0, 101.5] (0.018) | **36** [2.0, 99.5] | 570 | 407 | 992 |
+| gaussian_control | random_forest | episode_fa<=1 (k=3,m=3) | 2008 | **40** [3.0, 109.5] (0.020) | **27** [0.0, 75.0] | 494 | 393 | 1075 |
+| gaussian_control | random_forest | strict_window_fa<=1 | 2008 | **44** [5.5, 114.5] (0.022) | **24** [0.0, 68.0] | 298 | 229 | 1431 |
+| trough_panel | threshold_rule | raw (k=1) | 2008 | **144** [34.0, 285.0] (0.072) | **144** [28.3, 290.0] | 314 | 232 | 1314 |
+| trough_panel | threshold_rule | episode_fa<=1 (k=3,m=3) | 2008 | **144** [34.0, 285.0] (0.072) | **141** [24.9, 282.5] | 314 | 232 | 1314 |
+| trough_panel | threshold_rule | strict_window_fa<=1 | 2008 | **144** [34.0, 285.0] (0.072) | **123** [24.0, 266.0] | 314 | 232 | 1314 |
+| trough_panel | logistic_regression | raw (k=1) | 2008 | **201** [93.5, 327.1] (0.100) | **201** [111.5, 315.0] | 609 | 585 | 598 |
+| trough_panel | logistic_regression | episode_fa<=1 (k=3,m=3) | 2008 | **30** [6.0, 67.0] (0.015) | **18** [0.0, 44.0] | 200 | 311 | 1464 |
+| trough_panel | logistic_regression | strict_window_fa<=1 | 2008 | **18** [2.0, 47.0] (0.009) | **2** [0.0, 6.0] | 43 | 116 | 1828 |
+| trough_panel | random_forest | raw (k=1) | 2008 | **121** [28.9, 251.0] (0.060) | **121** [33.0, 234.5] | 421 | 324 | 1138 |
+| trough_panel | random_forest | episode_fa<=1 (k=3,m=3) | 2008 | **133** [35.4, 273.5] (0.066) | **119** [26.0, 240.0] | 277 | 275 | 1316 |
+| trough_panel | random_forest | strict_window_fa<=1 | 2008 | **163** [49.0, 309.2] (0.081) | **142** [42.4, 265.5] | 96 | 124 | 1618 |
+| asymmetric | threshold_rule | raw (k=1) | 2008 | **27** [0.0, 95.2] (0.013) | **27** [0.0, 81.0] | 406 | 274 | 1297 |
+| asymmetric | threshold_rule | episode_fa<=1 (k=3,m=3) | 2008 | **27** [0.0, 95.2] (0.013) | **28** [0.0, 84.0] | 406 | 274 | 1297 |
+| asymmetric | threshold_rule | strict_window_fa<=1 | 2008 | **27** [0.0, 95.2] (0.013) | **26** [0.0, 78.0] | 406 | 274 | 1297 |
+| asymmetric | logistic_regression | raw (k=1) | 2008 | **141** [61.0, 242.0] (0.070) | **141** [70.4, 225.6] | 547 | 840 | 470 |
+| asymmetric | logistic_regression | episode_fa<=1 (k=3,m=3) | 2008 | **16** [4.0, 33.5] (0.008) | **0** [0.0, 0.0] | 279 | 545 | 1166 |
+| asymmetric | logistic_regression | strict_window_fa<=1 | 2008 | **9** [0.0, 21.0] (0.004) | **0** [0.0, 0.0] | 94 | 271 | 1632 |
+| asymmetric | random_forest | raw (k=1) | 2008 | **5** [1.0, 11.0] (0.003) | **5** [1.0, 10.0] | 565 | 550 | 885 |
+| asymmetric | random_forest | episode_fa<=1 (k=3,m=3) | 2008 | **9** [2.0, 21.0] (0.004) | **3** [0.0, 9.0] | 485 | 539 | 969 |
+| asymmetric | random_forest | strict_window_fa<=1 | 2008 | **12** [4.0, 24.0] (0.006) | **2** [0.0, 6.0] | 319 | 402 | 1269 |
+| two_basin | threshold_rule | raw (k=1) | 2008 | **90** [2.0, 259.0] (0.045) | **90** [2.0, 224.0] | 375 | 282 | 1257 |
+| two_basin | threshold_rule | episode_fa<=1 (k=3,m=3) | 2008 | **90** [2.0, 259.0] (0.045) | **82** [0.0, 213.0] | 375 | 282 | 1257 |
+| two_basin | threshold_rule | strict_window_fa<=1 | 2008 | **90** [2.0, 259.0] (0.045) | **78** [0.0, 203.0] | 375 | 282 | 1257 |
+| two_basin | logistic_regression | raw (k=1) | 2008 | **163** [85.4, 267.3] (0.081) | **163** [84.4, 266.6] | 592 | 716 | 523 |
+| two_basin | logistic_regression | episode_fa<=1 (k=3,m=3) | 2008 | **17** [3.5, 38.0] (0.009) | **8** [0.0, 24.0] | 289 | 354 | 1346 |
+| two_basin | logistic_regression | strict_window_fa<=1 | 2008 | **8** [0.0, 18.0] (0.004) | **0** [0.0, 0.0] | 117 | 146 | 1735 |
+| two_basin | random_forest | raw (k=1) | 2008 | **35** [0.0, 102.5] (0.017) | **35** [0.0, 91.0] | 647 | 311 | 1012 |
+| two_basin | random_forest | episode_fa<=1 (k=3,m=3) | 2008 | **40** [4.0, 104.1] (0.020) | **27** [0.0, 68.5] | 558 | 289 | 1115 |
+| two_basin | random_forest | strict_window_fa<=1 | 2008 | **54** [5.0, 147.0] (0.027) | **30** [0.0, 72.0] | 381 | 159 | 1407 |
+| planar_slope | threshold_rule | raw (k=1) | 2008 | **2** [0.0, 6.0] (0.001) | **2** [0.0, 6.0] | 522 | 366 | 1114 |
+| planar_slope | threshold_rule | episode_fa<=1 (k=3,m=3) | 2008 | **2** [0.0, 6.0] (0.001) | **0** [0.0, 0.0] | 522 | 366 | 1114 |
+| planar_slope | threshold_rule | strict_window_fa<=1 | 2008 | **2** [0.0, 6.0] (0.001) | **0** [0.0, 0.0] | 522 | 366 | 1114 |
+| planar_slope | logistic_regression | raw (k=1) | 2008 | **346** [200.0, 524.6] (0.172) | **346** [214.9, 493.6] | 505 | 624 | 519 |
+| planar_slope | logistic_regression | episode_fa<=1 (k=3,m=3) | 2008 | **112** [64.0, 181.1] (0.056) | **72** [28.0, 125.0] | 283 | 410 | 1195 |
+| planar_slope | logistic_regression | strict_window_fa<=1 | 2008 | **78** [37.5, 132.5] (0.039) | **18** [4.0, 40.0] | 170 | 275 | 1477 |
+| planar_slope | random_forest | raw (k=1) | 2008 | **123** [36.5, 217.0] (0.061) | **123** [50.5, 206.0] | 481 | 362 | 1038 |
+| planar_slope | random_forest | episode_fa<=1 (k=3,m=3) | 2008 | **120** [40.5, 211.6] (0.060) | **109** [35.4, 192.5] | 315 | 331 | 1235 |
+| planar_slope | random_forest | strict_window_fa<=1 | 2008 | **141** [48.4, 245.7] (0.070) | **122** [46.5, 205.5] | 88 | 191 | 1581 |

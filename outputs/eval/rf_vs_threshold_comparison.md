@@ -1,0 +1,36 @@
+# rf_vs_threshold_comparison (SYNTHETIC / SIMULATION)
+
+| split | metric | rf_val | th_val | rf_minus_th | diff_ci_lo | diff_ci_hi | rf_fails_to_beat_th |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| val | macro_f1 | 0.6224 | 0.6308 | -0.0085 | -0.0376 | 0.0267 | True |
+| val | recall_normal | 0.6537 | 0.8657 | -0.212 | -0.2511 | -0.1676 | True |
+| val | recall_gradual | 0.3835 | 0.1682 | 0.2153 | 0.0498 | 0.3786 | False |
+| val | recall_rapid | 0.2782 | 0.2077 | 0.0705 | -0.0447 | 0.1758 | True |
+| val | recall_abnormal_vibration | 1 | 0.998 | 0.002 | 0 | 0.0061 | True |
+| val | recall_sensor_fault | 0.3954 | 0.4791 | -0.0837 | -0.1832 | 0.0223 | True |
+| val | recall_comm_fault | 0.9401 | 0.9102 | 0.0299 | 0.0039 | 0.0685 | False |
+| test | macro_f1 | 0.6398 | 0.6551 | -0.0153 | -0.0524 | 0.0194 | True |
+| test | recall_normal | 0.7404 | 0.928 | -0.1876 | -0.2264 | -0.1527 | True |
+| test | recall_gradual | 0.3841 | 0.159 | 0.2251 | 0.1082 | 0.3689 | False |
+| test | recall_rapid | 0.2528 | 0.2785 | -0.0257 | -0.1508 | 0.0796 | True |
+| test | recall_abnormal_vibration | 1 | 0.998 | 0.002 | 0 | 0.0064 | True |
+| test | recall_sensor_fault | 0.4216 | 0.4541 | -0.0324 | -0.1262 | 0.0564 | True |
+| test | recall_comm_fault | 0.9189 | 0.9094 | 0.0094 | 0 | 0.0239 | True |
+| shifted_test | macro_f1 | 0.5372 | 0.6069 | -0.0697 | -0.1031 | -0.0315 | True |
+| shifted_test | recall_normal | 0.2421 | 0.5568 | -0.3147 | -0.3564 | -0.2653 | True |
+| shifted_test | recall_gradual | 0.7556 | 0.2986 | 0.457 | 0.3438 | 0.5435 | False |
+| shifted_test | recall_rapid | 0.1714 | 0.4094 | -0.238 | -0.3859 | -0.0718 | True |
+| shifted_test | recall_abnormal_vibration | 1 | 0.9973 | 0.0027 | 0 | 0.0077 | True |
+| shifted_test | recall_sensor_fault | 0.3431 | 0.4335 | -0.0904 | -0.2117 | 0.0139 | True |
+| shifted_test | recall_comm_fault | 0.9345 | 0.9169 | 0.0176 | 0 | 0.0524 | True |
+| stress | macro_f1 | 0.497 | 0.4676 | 0.0295 | 0.0003 | 0.061 | False |
+| stress | recall_normal | 0.7105 | 0.8951 | -0.1845 | -0.2302 | -0.145 | True |
+| stress | recall_gradual | 0.3471 | 0.1723 | 0.1748 | 0.0958 | 0.2534 | False |
+| stress | recall_rapid | 0.1766 | 0.2024 | -0.0258 | -0.1064 | 0.057 | True |
+| stress | recall_abnormal_vibration | 0.9201 | 0.7221 | 0.1979 | 0.0808 | 0.3308 | False |
+| stress | recall_sensor_fault | 0.2966 | 0.3056 | -0.009 | -0.0457 | 0.0258 | True |
+| stress | recall_comm_fault | 0.9273 | 0.8972 | 0.0301 | 0 | 0.0643 | True |
+| broad_basin | macro_f1 | 0.4967 | 0.416 | 0.0807 | -0.0013 | 0.1619 | True |
+| broad_basin | recall_normal | 0.7611 | 0.9574 | -0.1963 | -0.2631 | -0.1183 | True |
+| broad_basin | recall_gradual | 0.5126 | 0.2039 | 0.3088 | 0.1756 | 0.439 | False |
+| broad_basin | recall_rapid | 0.2727 | 0.2572 | 0.0156 | -0.1195 | 0.1702 | True |

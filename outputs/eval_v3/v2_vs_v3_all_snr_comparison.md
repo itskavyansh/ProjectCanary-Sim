@@ -1,0 +1,94 @@
+# v2_vs_v3_all_snr_comparison (SYNTHETIC / SIMULATION)
+
+| split | version | regime | model | k | m | window_macro_f1 | window_macro_f1_ci_lo | window_macro_f1_ci_hi | alarm_macro_f1 | alarm_macro_f1_ci_lo | alarm_macro_f1_ci_hi | fa_episodes_per_normal_run | fa_windows_per_normal_run | alarm_exact_detect_rate | alarm_exact_detect_ci_lo | alarm_exact_detect_ci_hi | mean_delay_exact_s |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| val | v2 (old features) | raw (k=1) | threshold_rule | 1 | 1 | 0.6308 | 0.593 | 0.6648 | 0.6308 | 0.593 | 0.6648 | 11.45 | 17.5 | 0.73 | 0.65 | 0.8152 | 12.263 |
+| val | v2 (old features) | episode_fa<=1 (k=3,m=3) | threshold_rule | 3 | 3 | 0.6308 | 0.593 | 0.6648 | 0.6035 | 0.5601 | 0.6414 | 1 | 9.15 | 0.7 | 0.6148 | 0.79 | 23.488 |
+| val | v2 (old features) | strict_window_fa<=1 | threshold_rule | 5 | 2 | 0.6308 | 0.593 | 0.6648 | 0.5991 | 0.5459 | 0.636 | 0.2 | 0.6 | 0.65 | 0.57 | 0.74 | 29.261 |
+| val | v3 (new features) | raw (k=1) | threshold_rule | 1 | 1 | 0.6374 | 0.6024 | 0.6689 | 0.6374 | 0.6024 | 0.6689 | 11.45 | 17.5 | 0.75 | 0.67 | 0.8352 | 12.483 |
+| val | v3 (new features) | episode_fa<=1 (k=3,m=3) | threshold_rule | 3 | 3 | 0.6374 | 0.6024 | 0.6689 | 0.6124 | 0.5734 | 0.6498 | 1 | 9.15 | 0.72 | 0.64 | 0.8052 | 23.894 |
+| val | v3 (new features) | strict_window_fa<=1 | threshold_rule | 5 | 2 | 0.6374 | 0.6024 | 0.6689 | 0.6016 | 0.5485 | 0.6395 | 0.2 | 0.6 | 0.65 | 0.5747 | 0.74 | 28.131 |
+| val | v2 (old features) | raw (k=1) | logistic_regression | 1 | 1 | 0.5488 | 0.5127 | 0.5844 | 0.5488 | 0.5127 | 0.5844 | 24.6 | 53.75 | 0.95 | 0.9 | 0.99 | 18.43 |
+| val | v2 (old features) | episode_fa<=1 (k=3,m=3) | logistic_regression | 3 | 3 | 0.5825 | 0.5313 | 0.6283 | 0.5724 | 0.5158 | 0.6238 | 0.6 | 6.2 | 0.6 | 0.4948 | 0.7 | 21.616 |
+| val | v2 (old features) | strict_window_fa<=1 | logistic_regression | 3 | 2 | 0.5462 | 0.5012 | 0.5875 | 0.5231 | 0.4796 | 0.5619 | 0.25 | 0.95 | 0.54 | 0.44 | 0.64 | 16.07 |
+| val | v3 (new features) | raw (k=1) | logistic_regression | 1 | 1 | 0.5556 | 0.5163 | 0.5865 | 0.5556 | 0.5163 | 0.5865 | 23.4 | 55.65 | 0.95 | 0.9 | 0.98 | 12.694 |
+| val | v3 (new features) | episode_fa<=1 (k=3,m=3) | logistic_regression | 3 | 3 | 0.6077 | 0.5601 | 0.6519 | 0.5922 | 0.5413 | 0.6429 | 0.85 | 7.65 | 0.66 | 0.57 | 0.75 | 17.263 |
+| val | v3 (new features) | strict_window_fa<=1 | logistic_regression | 3 | 2 | 0.5743 | 0.5322 | 0.6159 | 0.5461 | 0.503 | 0.588 | 0.3 | 0.95 | 0.61 | 0.51 | 0.7 | 21.522 |
+| val | v2 (old features) | raw (k=1) | random_forest | 1 | 1 | 0.6224 | 0.5766 | 0.663 | 0.6224 | 0.5766 | 0.663 | 11.05 | 43.65 | 0.84 | 0.75 | 0.9052 | 13.56 |
+| val | v2 (old features) | episode_fa<=1 (k=3,m=3) | random_forest | 3 | 3 | 0.6226 | 0.575 | 0.6646 | 0.6092 | 0.5606 | 0.6523 | 1 | 6.85 | 0.68 | 0.5948 | 0.7652 | 16.303 |
+| val | v2 (old features) | strict_window_fa<=1 | random_forest | 3 | 2 | 0.6177 | 0.5691 | 0.6619 | 0.6014 | 0.5509 | 0.6462 | 0.35 | 0.95 | 0.64 | 0.56 | 0.73 | 16.583 |
+| val | v3 (new features) | raw (k=1) | random_forest | 1 | 1 | 0.6713 | 0.6299 | 0.7151 | 0.6713 | 0.6299 | 0.7151 | 8.35 | 16.4 | 0.83 | 0.7448 | 0.9052 | 14.896 |
+| val | v3 (new features) | episode_fa<=1 (k=3,m=3) | random_forest | 3 | 3 | 0.6676 | 0.6215 | 0.711 | 0.6552 | 0.6049 | 0.7035 | 1 | 6.8 | 0.76 | 0.68 | 0.85 | 22.139 |
+| val | v3 (new features) | strict_window_fa<=1 | random_forest | 3 | 2 | 0.6572 | 0.6046 | 0.7068 | 0.6486 | 0.5908 | 0.7032 | 0.4 | 0.8 | 0.7 | 0.62 | 0.79 | 17.508 |
+| test | v2 (old features) | raw (k=1) | threshold_rule | 1 | 1 | 0.6551 | 0.6096 | 0.69 | 0.6551 | 0.6096 | 0.69 | 6.65 | 10.05 | 0.79 | 0.7 | 0.87 | 19.84 |
+| test | v2 (old features) | episode_fa<=1 (k=3,m=3) | threshold_rule | 3 | 3 | 0.6551 | 0.6096 | 0.69 | 0.6282 | 0.5776 | 0.6682 | 0.6 | 5.6 | 0.69 | 0.58 | 0.7852 | 26.598 |
+| test | v2 (old features) | strict_window_fa<=1 | threshold_rule | 5 | 2 | 0.6551 | 0.6096 | 0.69 | 0.6028 | 0.5476 | 0.6491 | 0.05 | 0.1 | 0.65 | 0.55 | 0.74 | 28.701 |
+| test | v3 (new features) | raw (k=1) | threshold_rule | 1 | 1 | 0.6547 | 0.6095 | 0.6889 | 0.6547 | 0.6095 | 0.6889 | 6.75 | 10.05 | 0.8 | 0.71 | 0.88 | 19.758 |
+| test | v3 (new features) | episode_fa<=1 (k=3,m=3) | threshold_rule | 3 | 3 | 0.6547 | 0.6095 | 0.6889 | 0.6298 | 0.5805 | 0.6685 | 0.6 | 5.6 | 0.7 | 0.6 | 0.79 | 27.148 |
+| test | v3 (new features) | strict_window_fa<=1 | threshold_rule | 5 | 2 | 0.6547 | 0.6095 | 0.6889 | 0.6032 | 0.5483 | 0.6493 | 0.05 | 0.1 | 0.65 | 0.55 | 0.74 | 28.662 |
+| test | v2 (old features) | raw (k=1) | logistic_regression | 1 | 1 | 0.5331 | 0.5014 | 0.5594 | 0.5331 | 0.5014 | 0.5594 | 22.65 | 42.45 | 0.96 | 0.92 | 0.99 | 16.654 |
+| test | v2 (old features) | episode_fa<=1 (k=3,m=3) | logistic_regression | 3 | 3 | 0.5516 | 0.509 | 0.5918 | 0.5378 | 0.4889 | 0.5867 | 0.15 | 0.45 | 0.55 | 0.44 | 0.66 | 17.747 |
+| test | v2 (old features) | strict_window_fa<=1 | logistic_regression | 3 | 2 | 0.5193 | 0.4809 | 0.559 | 0.5071 | 0.4659 | 0.5481 | 0 | 0 | 0.5 | 0.4 | 0.6 | 16.236 |
+| test | v3 (new features) | raw (k=1) | logistic_regression | 1 | 1 | 0.5269 | 0.4965 | 0.5595 | 0.5269 | 0.4965 | 0.5595 | 21.1 | 44.95 | 0.94 | 0.8948 | 0.98 | 16.544 |
+| test | v3 (new features) | episode_fa<=1 (k=3,m=3) | logistic_regression | 3 | 3 | 0.5711 | 0.5283 | 0.6135 | 0.5589 | 0.5108 | 0.6057 | 0.1 | 1 | 0.61 | 0.51 | 0.71 | 22.356 |
+| test | v3 (new features) | strict_window_fa<=1 | logistic_regression | 3 | 2 | 0.5519 | 0.5024 | 0.5978 | 0.5416 | 0.4925 | 0.5894 | 0 | 0 | 0.55 | 0.44 | 0.65 | 18.977 |
+| test | v2 (old features) | raw (k=1) | random_forest | 1 | 1 | 0.6398 | 0.5925 | 0.6823 | 0.6398 | 0.5925 | 0.6823 | 10.95 | 30.05 | 0.83 | 0.75 | 0.9 | 14.183 |
+| test | v2 (old features) | episode_fa<=1 (k=3,m=3) | random_forest | 3 | 3 | 0.633 | 0.5846 | 0.6797 | 0.6149 | 0.5629 | 0.6622 | 0.6 | 3.95 | 0.67 | 0.57 | 0.76 | 22.348 |
+| test | v2 (old features) | strict_window_fa<=1 | random_forest | 3 | 2 | 0.6283 | 0.5766 | 0.6748 | 0.6054 | 0.546 | 0.6621 | 0.2 | 1.35 | 0.61 | 0.51 | 0.71 | 18.358 |
+| test | v3 (new features) | raw (k=1) | random_forest | 1 | 1 | 0.6385 | 0.5931 | 0.6832 | 0.6385 | 0.5931 | 0.6832 | 5.65 | 11.45 | 0.83 | 0.7548 | 0.9052 | 20.57 |
+| test | v3 (new features) | episode_fa<=1 (k=3,m=3) | random_forest | 3 | 3 | 0.6304 | 0.5824 | 0.6762 | 0.6215 | 0.5694 | 0.6721 | 0.65 | 5.2 | 0.69 | 0.6048 | 0.77 | 22.091 |
+| test | v3 (new features) | strict_window_fa<=1 | random_forest | 3 | 2 | 0.6234 | 0.5751 | 0.6686 | 0.6057 | 0.5552 | 0.6524 | 0.25 | 1.9 | 0.64 | 0.56 | 0.72 | 20.022 |
+| shifted_test | v2 (old features) | raw (k=1) | threshold_rule | 1 | 1 | 0.6069 | 0.558 | 0.644 | 0.6069 | 0.558 | 0.644 | 29.667 | 43.667 | 0.92 | 0.8533 | 0.9733 | 7.409 |
+| shifted_test | v2 (old features) | episode_fa<=1 (k=3,m=3) | threshold_rule | 3 | 3 | 0.6069 | 0.558 | 0.644 | 0.5925 | 0.538 | 0.634 | 2.467 | 21.467 | 0.8133 | 0.7263 | 0.9067 | 22.46 |
+| shifted_test | v2 (old features) | strict_window_fa<=1 | threshold_rule | 5 | 2 | 0.6069 | 0.558 | 0.644 | 0.5724 | 0.511 | 0.6214 | 0.2 | 1.667 | 0.6667 | 0.553 | 0.767 | 28.734 |
+| shifted_test | v3 (new features) | raw (k=1) | threshold_rule | 1 | 1 | 0.6106 | 0.5685 | 0.6448 | 0.6106 | 0.5685 | 0.6448 | 29.8 | 43.667 | 0.9467 | 0.8933 | 0.9867 | 8.374 |
+| shifted_test | v3 (new features) | episode_fa<=1 (k=3,m=3) | threshold_rule | 3 | 3 | 0.6106 | 0.5685 | 0.6448 | 0.6056 | 0.5582 | 0.6477 | 2.467 | 21.467 | 0.8267 | 0.7333 | 0.9067 | 22.376 |
+| shifted_test | v3 (new features) | strict_window_fa<=1 | threshold_rule | 5 | 2 | 0.6106 | 0.5685 | 0.6448 | 0.5743 | 0.5135 | 0.6259 | 0.2 | 1.667 | 0.6667 | 0.553 | 0.767 | 28.584 |
+| shifted_test | v2 (old features) | raw (k=1) | logistic_regression | 1 | 1 | 0.4592 | 0.4356 | 0.4802 | 0.4592 | 0.4356 | 0.4802 | 33.133 | 77.467 | 0.96 | 0.9067 | 1 | 11.335 |
+| shifted_test | v2 (old features) | episode_fa<=1 (k=3,m=3) | logistic_regression | 3 | 3 | 0.5263 | 0.4988 | 0.5553 | 0.5034 | 0.4682 | 0.5382 | 0.733 | 3.6 | 0.6933 | 0.5733 | 0.7867 | 30.073 |
+| shifted_test | v2 (old features) | strict_window_fa<=1 | logistic_regression | 3 | 2 | 0.5002 | 0.473 | 0.524 | 0.479 | 0.4464 | 0.5103 | 0.133 | 0.333 | 0.5467 | 0.4267 | 0.6603 | 21.404 |
+| shifted_test | v3 (new features) | raw (k=1) | logistic_regression | 1 | 1 | 0.4758 | 0.4472 | 0.4979 | 0.4758 | 0.4472 | 0.4979 | 29.467 | 76.667 | 0.9867 | 0.96 | 1 | 12.23 |
+| shifted_test | v3 (new features) | episode_fa<=1 (k=3,m=3) | logistic_regression | 3 | 3 | 0.5422 | 0.511 | 0.5701 | 0.5117 | 0.4704 | 0.5495 | 1.267 | 7.867 | 0.6933 | 0.5867 | 0.7937 | 28.278 |
+| shifted_test | v3 (new features) | strict_window_fa<=1 | logistic_regression | 3 | 2 | 0.513 | 0.4885 | 0.5371 | 0.4735 | 0.4441 | 0.4987 | 0.6 | 1.667 | 0.5333 | 0.4133 | 0.64 | 16.759 |
+| shifted_test | v2 (old features) | raw (k=1) | random_forest | 1 | 1 | 0.5372 | 0.4876 | 0.5761 | 0.5372 | 0.4876 | 0.5761 | 14.333 | 77.333 | 0.92 | 0.8533 | 0.9733 | 8.53 |
+| shifted_test | v2 (old features) | episode_fa<=1 (k=3,m=3) | random_forest | 3 | 3 | 0.5977 | 0.5569 | 0.6398 | 0.5828 | 0.5365 | 0.6271 | 2.133 | 12.2 | 0.7733 | 0.68 | 0.8533 | 22.764 |
+| shifted_test | v2 (old features) | strict_window_fa<=1 | random_forest | 3 | 2 | 0.6056 | 0.5596 | 0.6532 | 0.5806 | 0.5306 | 0.6301 | 0.467 | 1.4 | 0.72 | 0.6133 | 0.8203 | 20.63 |
+| shifted_test | v3 (new features) | raw (k=1) | random_forest | 1 | 1 | 0.6101 | 0.5662 | 0.6483 | 0.6101 | 0.5662 | 0.6483 | 14.333 | 32.067 | 0.8933 | 0.8133 | 0.96 | 11.476 |
+| shifted_test | v3 (new features) | episode_fa<=1 (k=3,m=3) | random_forest | 3 | 3 | 0.6097 | 0.5642 | 0.6471 | 0.5915 | 0.545 | 0.6355 | 1.4 | 8.6 | 0.7733 | 0.6667 | 0.8533 | 20.762 |
+| shifted_test | v3 (new features) | strict_window_fa<=1 | random_forest | 3 | 2 | 0.6048 | 0.5597 | 0.6486 | 0.5816 | 0.5342 | 0.628 | 0.2 | 0.6 | 0.72 | 0.6267 | 0.8133 | 24.722 |
+| stress | v2 (old features) | raw (k=1) | threshold_rule | 1 | 1 | 0.4676 | 0.4286 | 0.5077 | 0.4676 | 0.4286 | 0.5077 | 0 | 0 | 1 | 1 | 1 | 34.888 |
+| stress | v2 (old features) | episode_fa<=1 (k=3,m=3) | threshold_rule | 3 | 3 | 0.4676 | 0.4286 | 0.5077 | 0.4404 | 0.4005 | 0.4835 | 0 | 0 | 0.95 | 0.91 | 0.99 | 46.377 |
+| stress | v2 (old features) | strict_window_fa<=1 | threshold_rule | 5 | 2 | 0.4676 | 0.4286 | 0.5077 | 0.3863 | 0.349 | 0.4248 | 0 | 0 | 0.89 | 0.83 | 0.95 | 46.283 |
+| stress | v3 (new features) | raw (k=1) | threshold_rule | 1 | 1 | 0.4657 | 0.4265 | 0.5043 | 0.4657 | 0.4265 | 0.5043 | 0 | 0 | 1 | 1 | 1 | 35.638 |
+| stress | v3 (new features) | episode_fa<=1 (k=3,m=3) | threshold_rule | 3 | 3 | 0.4657 | 0.4265 | 0.5043 | 0.4342 | 0.394 | 0.4775 | 0 | 0 | 0.94 | 0.9 | 0.98 | 45.903 |
+| stress | v3 (new features) | strict_window_fa<=1 | threshold_rule | 5 | 2 | 0.4657 | 0.4265 | 0.5043 | 0.3809 | 0.3423 | 0.4199 | 0 | 0 | 0.87 | 0.8 | 0.94 | 44.817 |
+| stress | v2 (old features) | raw (k=1) | logistic_regression | 1 | 1 | 0.4593 | 0.4223 | 0.4975 | 0.4593 | 0.4223 | 0.4975 | 0 | 0 | 0.97 | 0.93 | 1 | 35.781 |
+| stress | v2 (old features) | episode_fa<=1 (k=3,m=3) | logistic_regression | 3 | 3 | 0.4511 | 0.4131 | 0.4941 | 0.4229 | 0.3829 | 0.4662 | 0 | 0 | 0.87 | 0.8048 | 0.93 | 38.441 |
+| stress | v2 (old features) | strict_window_fa<=1 | logistic_regression | 3 | 2 | 0.4052 | 0.3719 | 0.4387 | 0.3735 | 0.341 | 0.4054 | 0 | 0 | 0.81 | 0.73 | 0.89 | 30.239 |
+| stress | v3 (new features) | raw (k=1) | logistic_regression | 1 | 1 | 0.4942 | 0.4599 | 0.5366 | 0.4942 | 0.4599 | 0.5366 | 0 | 0 | 1 | 1 | 1 | 30.863 |
+| stress | v3 (new features) | episode_fa<=1 (k=3,m=3) | logistic_regression | 3 | 3 | 0.4938 | 0.4574 | 0.5415 | 0.4646 | 0.4266 | 0.5119 | 0 | 0 | 0.93 | 0.87 | 0.9752 | 42.681 |
+| stress | v3 (new features) | strict_window_fa<=1 | logistic_regression | 3 | 2 | 0.4486 | 0.4106 | 0.4887 | 0.4149 | 0.3769 | 0.4558 | 0 | 0 | 0.84 | 0.7648 | 0.91 | 34.513 |
+| stress | v2 (old features) | raw (k=1) | random_forest | 1 | 1 | 0.497 | 0.4583 | 0.5379 | 0.497 | 0.4583 | 0.5379 | 0 | 0 | 0.99 | 0.96 | 1 | 31.002 |
+| stress | v2 (old features) | episode_fa<=1 (k=3,m=3) | random_forest | 3 | 3 | 0.4794 | 0.4434 | 0.5236 | 0.4434 | 0.4073 | 0.4895 | 0 | 0 | 0.93 | 0.88 | 0.98 | 42.214 |
+| stress | v2 (old features) | strict_window_fa<=1 | random_forest | 3 | 2 | 0.4723 | 0.4342 | 0.5169 | 0.439 | 0.4021 | 0.4814 | 0 | 0 | 0.91 | 0.85 | 0.96 | 40.966 |
+| stress | v3 (new features) | raw (k=1) | random_forest | 1 | 1 | 0.5387 | 0.503 | 0.5747 | 0.5387 | 0.503 | 0.5747 | 0 | 0 | 1 | 1 | 1 | 34.088 |
+| stress | v3 (new features) | episode_fa<=1 (k=3,m=3) | random_forest | 3 | 3 | 0.53 | 0.4947 | 0.5675 | 0.5013 | 0.4644 | 0.5367 | 0 | 0 | 0.95 | 0.9 | 0.99 | 41.524 |
+| stress | v3 (new features) | strict_window_fa<=1 | random_forest | 3 | 2 | 0.5023 | 0.4666 | 0.5425 | 0.4677 | 0.4329 | 0.5054 | 0 | 0 | 0.9 | 0.85 | 0.95 | 42.691 |
+| broad_basin | v2 (old features) | raw (k=1) | threshold_rule | 1 | 1 | 0.416 | 0.3468 | 0.4834 | 0.416 | 0.3468 | 0.4834 | 0 | 0 | 0.725 | 0.6 | 0.8381 | 45.524 |
+| broad_basin | v2 (old features) | episode_fa<=1 (k=3,m=3) | threshold_rule | 3 | 3 | 0.416 | 0.3468 | 0.4834 | 0.3928 | 0.3155 | 0.4788 | 0 | 0 | 0.475 | 0.325 | 0.625 | 63.516 |
+| broad_basin | v2 (old features) | strict_window_fa<=1 | threshold_rule | 5 | 2 | 0.416 | 0.3468 | 0.4834 | 0.363 | 0.2794 | 0.4486 | 0 | 0 | 0.35 | 0.1869 | 0.5 | 71.479 |
+| broad_basin | v3 (new features) | raw (k=1) | threshold_rule | 1 | 1 | 0.4114 | 0.3399 | 0.4814 | 0.4114 | 0.3399 | 0.4814 | 0 | 0 | 0.725 | 0.6 | 0.8381 | 48.455 |
+| broad_basin | v3 (new features) | episode_fa<=1 (k=3,m=3) | threshold_rule | 3 | 3 | 0.4114 | 0.3399 | 0.4814 | 0.3882 | 0.3106 | 0.4722 | 0 | 0 | 0.45 | 0.2869 | 0.6131 | 63.533 |
+| broad_basin | v3 (new features) | strict_window_fa<=1 | threshold_rule | 5 | 2 | 0.4114 | 0.3399 | 0.4814 | 0.3589 | 0.2742 | 0.442 | 0 | 0 | 0.325 | 0.175 | 0.475 | 71.731 |
+| broad_basin | v2 (old features) | raw (k=1) | logistic_regression | 1 | 1 | 0.4283 | 0.3554 | 0.5005 | 0.4283 | 0.3554 | 0.5005 | 0 | 0 | 0.95 | 0.875 | 1 | 27.176 |
+| broad_basin | v2 (old features) | episode_fa<=1 (k=3,m=3) | logistic_regression | 3 | 3 | 0.3077 | 0.2287 | 0.3819 | 0.2888 | 0.21 | 0.3619 | 0 | 0 | 0.25 | 0.125 | 0.4 | 56.05 |
+| broad_basin | v2 (old features) | strict_window_fa<=1 | logistic_regression | 3 | 2 | 0.233 | 0.1755 | 0.2875 | 0.2182 | 0.1695 | 0.2676 | 0 | 0 | 0.1 | 0.025 | 0.2 | 19.225 |
+| broad_basin | v3 (new features) | raw (k=1) | logistic_regression | 1 | 1 | 0.4789 | 0.4091 | 0.5413 | 0.4789 | 0.4091 | 0.5413 | 0 | 0 | 0.925 | 0.825 | 1 | 28.035 |
+| broad_basin | v3 (new features) | episode_fa<=1 (k=3,m=3) | logistic_regression | 3 | 3 | 0.3814 | 0.312 | 0.4493 | 0.3569 | 0.2819 | 0.4282 | 0 | 0 | 0.425 | 0.275 | 0.575 | 46.406 |
+| broad_basin | v3 (new features) | strict_window_fa<=1 | logistic_regression | 3 | 2 | 0.2578 | 0.215 | 0.3122 | 0.2235 | 0.1835 | 0.2742 | 0 | 0 | 0.275 | 0.15 | 0.4 | 77.018 |
+| broad_basin | v2 (old features) | raw (k=1) | random_forest | 1 | 1 | 0.4967 | 0.3966 | 0.6008 | 0.4967 | 0.3966 | 0.6008 | 0 | 0 | 0.825 | 0.7 | 0.925 | 28.109 |
+| broad_basin | v2 (old features) | episode_fa<=1 (k=3,m=3) | random_forest | 3 | 3 | 0.4173 | 0.3153 | 0.5159 | 0.4093 | 0.3038 | 0.5073 | 0 | 0 | 0.425 | 0.275 | 0.5881 | 56.347 |
+| broad_basin | v2 (old features) | strict_window_fa<=1 | random_forest | 3 | 2 | 0.3956 | 0.2918 | 0.4926 | 0.3758 | 0.272 | 0.474 | 0 | 0 | 0.4 | 0.275 | 0.5631 | 65.013 |
+| broad_basin | v3 (new features) | raw (k=1) | random_forest | 1 | 1 | 0.4819 | 0.4075 | 0.5508 | 0.4819 | 0.4075 | 0.5508 | 0 | 0 | 0.9 | 0.8 | 0.975 | 29.814 |
+| broad_basin | v3 (new features) | episode_fa<=1 (k=3,m=3) | random_forest | 3 | 3 | 0.4647 | 0.3889 | 0.5368 | 0.4575 | 0.3704 | 0.5324 | 0 | 0 | 0.725 | 0.575 | 0.85 | 49.128 |
+| broad_basin | v3 (new features) | strict_window_fa<=1 | random_forest | 3 | 2 | 0.3979 | 0.32 | 0.4707 | 0.36 | 0.2767 | 0.4345 | 0 | 0 | 0.525 | 0.4 | 0.675 | 56.748 |

@@ -1,0 +1,28 @@
+split,condition,yaw_sd_deg,regime,model,model_version,n_runs,n_windows,window_macro_f1,window_macro_f1_ci_lo,window_macro_f1_ci_hi,alarm_macro_f1,alarm_macro_f1_ci_lo,alarm_macro_f1_ci_hi,fa_episodes_per_normal_run,fa_episodes_ci_lo,fa_episodes_ci_hi,fa_windows_per_normal_run,run_exact_detect_rate,run_exact_detect_ci_lo,run_exact_detect_ci_hi,gradual_to_sf_confusions,sf_to_gradual_confusions,gradual_sf_confusions,gradual_sf_confusions_ci_lo,gradual_sf_confusions_ci_hi
+test,single_node_45deg,45.0,raw (k=1),threshold_rule,v3_frozen,99,9266,0.6995,0.6502,0.7312,0.6995,0.6502,0.7312,6.7,2.548,11.1,10.05,0.9114,0.8481,0.9747,4,42,46,6.0,97.52499999999998
+test,single_node_45deg,45.0,"episode_fa<=1 (k=3,m=3)",threshold_rule,v3_frozen,99,9266,0.6995,0.6502,0.7312,0.6906,0.6349,0.7257,0.6,0.05,1.2,5.6,0.8481,0.7528,0.9241,4,42,46,6.0,97.52499999999998
+test,single_node_45deg,45.0,strict_window_fa<=1,threshold_rule,v3_frozen,99,9266,0.6995,0.6502,0.7312,0.6768,0.6153,0.7215,0.05,0.0,0.15,0.1,0.8101,0.6962,0.8987,4,42,46,6.0,97.52499999999998
+test,single_node_45deg,45.0,raw (k=1),logistic_regression,v3_frozen,99,9266,0.5378,0.4923,0.5815,0.5378,0.4923,0.5815,19.8,15.3,23.55,45.0,0.9494,0.9114,0.9873,55,83,138,65.475,217.0
+test,single_node_45deg,45.0,"episode_fa<=1 (k=3,m=3)",logistic_regression,v3_frozen,99,9266,0.6135,0.5469,0.6784,0.6069,0.5333,0.6752,0.35,0.1,0.65,1.65,0.6962,0.5949,0.7915,6,14,20,7.0,35.0
+test,single_node_45deg,45.0,strict_window_fa<=1,logistic_regression,v3_frozen,99,9266,0.5966,0.5282,0.664,0.5833,0.512,0.6519,0.05,0.0,0.15,0.2,0.6582,0.557,0.7595,3,6,9,1.0,22.0
+test,single_node_45deg,45.0,raw (k=1),random_forest,v3_frozen,99,9266,0.669,0.6018,0.7167,0.669,0.6018,0.7167,6.5,4.074,9.302,12.8,0.8861,0.8101,0.956,43,41,84,19.950000000000003,167.52499999999998
+test,single_node_45deg,45.0,"episode_fa<=1 (k=3,m=3)",random_forest,v3_frozen,99,9266,0.6726,0.6057,0.7197,0.6632,0.5872,0.7162,0.45,0.174,0.7,5.15,0.8228,0.7468,0.8987,45,29,74,12.475000000000001,160.0999999999999
+test,single_node_45deg,45.0,strict_window_fa<=1,random_forest,v3_frozen,99,9266,0.6701,0.5942,0.7203,0.6461,0.5613,0.7027,0.25,0.05,0.5,1.4,0.8101,0.7215,0.8987,47,6,53,5.0,137.52499999999998
+shifted_test,single_node_45deg,45.0,raw (k=1),threshold_rule,v3_frozen,71,6645,0.6104,0.5554,0.6519,0.6104,0.5554,0.6519,29.867,24.232,36.077,43.667,0.9286,0.8571,0.9821,7,61,68,30.0,107.0
+shifted_test,single_node_45deg,45.0,"episode_fa<=1 (k=3,m=3)",threshold_rule,v3_frozen,71,6645,0.6104,0.5554,0.6519,0.6234,0.5605,0.6797,2.4,1.467,3.435,21.067,0.8929,0.8214,0.9643,7,61,68,30.0,107.0
+shifted_test,single_node_45deg,45.0,strict_window_fa<=1,threshold_rule,v3_frozen,71,6645,0.6104,0.5554,0.6519,0.653,0.5791,0.7075,0.2,0.0,0.4,1.667,0.8393,0.75,0.9286,7,61,68,30.0,107.0
+shifted_test,single_node_45deg,45.0,raw (k=1),logistic_regression,v3_frozen,71,6645,0.4414,0.4132,0.4705,0.4414,0.4132,0.4705,31.6,29.6,33.603,76.2,1.0,1.0,1.0,37,145,182,99.475,271.57499999999993
+shifted_test,single_node_45deg,45.0,"episode_fa<=1 (k=3,m=3)",logistic_regression,v3_frozen,71,6645,0.5468,0.4994,0.5903,0.5403,0.4777,0.6001,1.067,0.667,1.4,5.733,0.7679,0.6513,0.8844,13,69,82,37.0,142.52499999999998
+shifted_test,single_node_45deg,45.0,strict_window_fa<=1,logistic_regression,v3_frozen,71,6645,0.5457,0.4995,0.5925,0.5179,0.4737,0.5638,0.333,0.067,0.667,0.933,0.75,0.6335,0.875,11,33,44,10.475000000000001,96.04999999999995
+shifted_test,single_node_45deg,45.0,raw (k=1),random_forest,v3_frozen,71,6645,0.6136,0.5537,0.6623,0.6136,0.5537,0.6623,14.8,11.93,17.238,29.467,0.9464,0.875,1.0,6,110,116,58.475,179.52499999999998
+shifted_test,single_node_45deg,45.0,"episode_fa<=1 (k=3,m=3)",random_forest,v3_frozen,71,6645,0.6251,0.5627,0.6762,0.6199,0.5448,0.6801,0.867,0.333,1.568,5.067,0.875,0.7857,0.9464,5,43,48,23.475,72.52499999999998
+shifted_test,single_node_45deg,45.0,strict_window_fa<=1,random_forest,v3_frozen,71,6645,0.63,0.5593,0.697,0.6239,0.545,0.7,0.067,0.0,0.2,0.2,0.8214,0.7143,0.9286,10,3,13,2.0,29.524999999999977
+broad_basin,single_node_45deg,45.0,raw (k=1),threshold_rule,v3_frozen,20,1882,0.557,0.4748,0.6308,0.557,0.4748,0.6308,0.0,0.0,0.0,0.0,0.9,0.75,1.0,32,0,32,0.0,96.0
+broad_basin,single_node_45deg,45.0,"episode_fa<=1 (k=3,m=3)",threshold_rule,v3_frozen,20,1882,0.557,0.4748,0.6308,0.5478,0.4402,0.6497,0.0,0.0,0.0,0.0,0.7,0.5,0.9,32,0,32,0.0,96.0
+broad_basin,single_node_45deg,45.0,strict_window_fa<=1,threshold_rule,v3_frozen,20,1882,0.557,0.4748,0.6308,0.5158,0.4069,0.6063,0.0,0.0,0.0,0.0,0.65,0.45,0.85,32,0,32,0.0,96.0
+broad_basin,single_node_45deg,45.0,raw (k=1),logistic_regression,v3_frozen,20,1882,0.5771,0.4838,0.6555,0.5771,0.4838,0.6555,0.0,0.0,0.0,0.0,0.95,0.85,1.0,13,0,13,5.0,21.524999999999977
+broad_basin,single_node_45deg,45.0,"episode_fa<=1 (k=3,m=3)",logistic_regression,v3_frozen,20,1882,0.5374,0.4399,0.6256,0.5559,0.4635,0.643,0.0,0.0,0.0,0.0,0.8,0.6,0.95,1,0,1,0.0,4.0
+broad_basin,single_node_45deg,45.0,strict_window_fa<=1,logistic_regression,v3_frozen,20,1882,0.3732,0.2722,0.4834,0.3227,0.2207,0.4291,0.0,0.0,0.0,0.0,0.55,0.35,0.8,0,0,0,0.0,0.0
+broad_basin,single_node_45deg,45.0,raw (k=1),random_forest,v3_frozen,20,1882,0.6012,0.5088,0.6843,0.6012,0.5088,0.6843,0.0,0.0,0.0,0.0,0.95,0.85,1.0,26,0,26,0.47500000000000053,92.52499999999998
+broad_basin,single_node_45deg,45.0,"episode_fa<=1 (k=3,m=3)",random_forest,v3_frozen,20,1882,0.5568,0.4586,0.6431,0.5554,0.4439,0.6471,0.0,0.0,0.0,0.0,0.75,0.55,0.95,21,0,21,0.0,72.0
+broad_basin,single_node_45deg,45.0,strict_window_fa<=1,random_forest,v3_frozen,20,1882,0.4325,0.3378,0.5179,0.4023,0.3018,0.4957,0.0,0.0,0.0,0.0,0.5,0.3,0.7,32,0,32,0.0,116.0

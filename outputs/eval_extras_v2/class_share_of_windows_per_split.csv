@@ -1,0 +1,5 @@
+,normal,gradual,rapid,sensor_fault,comm_fault,abnormal_vibration
+test,0.6364,0.1186,0.1038,0.0494,0.0471,0.0447
+shifted_test,0.6329,0.1228,0.1086,0.0446,0.0471,0.044
+stress,0.4134,0.2127,0.1906,0.0591,0.0426,0.0815
+broad_basin,0.3182,0.3573,0.3246,0.0,0.0,0.0

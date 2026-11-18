@@ -1,0 +1,469 @@
+{
+  "seed": 20261117,
+  "n_boot": 300,
+  "n_model_features": 71,
+  "model_features": [
+    "NODE_01_mean",
+    "NODE_01_std",
+    "NODE_01_slope",
+    "NODE_02_mean",
+    "NODE_02_std",
+    "NODE_02_slope",
+    "NODE_03_mean",
+    "NODE_03_std",
+    "NODE_03_slope",
+    "NODE_04_mean",
+    "NODE_04_std",
+    "NODE_04_slope",
+    "coherence",
+    "NODE_01_tilt_angle_rad",
+    "NODE_02_tilt_angle_rad",
+    "NODE_03_tilt_angle_rad",
+    "NODE_04_tilt_angle_rad",
+    "dir_pairwise_cos_mean",
+    "dir_pairwise_cos_min",
+    "dir_circular_spread",
+    "coherence_signed_tx",
+    "coherence_signed_ty",
+    "coherence_signed_mean",
+    "NODE_01_piezo_peak_max",
+    "NODE_01_piezo_rms_mean",
+    "NODE_01_piezo_p2p_max",
+    "NODE_01_piezo_impulse_count",
+    "NODE_02_piezo_peak_max",
+    "NODE_02_piezo_rms_mean",
+    "NODE_02_piezo_p2p_max",
+    "NODE_02_piezo_impulse_count",
+    "NODE_03_piezo_peak_max",
+    "NODE_03_piezo_rms_mean",
+    "NODE_03_piezo_p2p_max",
+    "NODE_03_piezo_impulse_count",
+    "NODE_04_piezo_peak_max",
+    "NODE_04_piezo_rms_mean",
+    "NODE_04_piezo_p2p_max",
+    "NODE_04_piezo_impulse_count",
+    "piezo_impulse_total",
+    "piezo_nodes_with_impulse",
+    "piezo_rms_network_mean",
+    "hub_common_mode_m",
+    "NODE_01_lidar_range_change_m",
+    "NODE_01_lidar_residual_m",
+    "NODE_01_lidar_staleness_s",
+    "NODE_02_lidar_range_change_m",
+    "NODE_02_lidar_residual_m",
+    "NODE_02_lidar_staleness_s",
+    "NODE_03_lidar_range_change_m",
+    "NODE_03_lidar_residual_m",
+    "NODE_03_lidar_staleness_s",
+    "NODE_04_lidar_range_change_m",
+    "NODE_04_lidar_residual_m",
+    "NODE_04_lidar_staleness_s",
+    "hub_residual_abs_max_m",
+    "hub_staleness_max_s",
+    "NODE_01_missing_frac",
+    "NODE_02_missing_frac",
+    "NODE_03_missing_frac",
+    "NODE_04_missing_frac",
+    "comm_missing_frac_net",
+    "comm_max_burst_len",
+    "comm_nodes_unavailable",
+    "comm_latency_mean_s",
+    "comm_latency_max_s",
+    "NODE_01_long_slope_deg_s",
+    "NODE_02_long_slope_deg_s",
+    "NODE_03_long_slope_deg_s",
+    "NODE_04_long_slope_deg_s",
+    "long_slope_max_deg_s"
+  ],
+  "feature_groups": {
+    "direction": [
+      "NODE_01_tilt_angle_rad",
+      "NODE_02_tilt_angle_rad",
+      "NODE_03_tilt_angle_rad",
+      "NODE_04_tilt_angle_rad",
+      "dir_pairwise_cos_mean",
+      "dir_pairwise_cos_min",
+      "dir_circular_spread"
+    ],
+    "coherence": [
+      "coherence",
+      "coherence_signed_tx",
+      "coherence_signed_ty",
+      "coherence_signed_mean"
+    ],
+    "piezo": [
+      "NODE_01_piezo_peak_max",
+      "NODE_02_piezo_peak_max",
+      "NODE_03_piezo_peak_max",
+      "NODE_04_piezo_peak_max",
+      "NODE_01_piezo_rms_mean",
+      "NODE_02_piezo_rms_mean",
+      "NODE_03_piezo_rms_mean",
+      "NODE_04_piezo_rms_mean",
+      "NODE_01_piezo_p2p_max",
+      "NODE_02_piezo_p2p_max",
+      "NODE_03_piezo_p2p_max",
+      "NODE_04_piezo_p2p_max",
+      "NODE_01_piezo_impulse_count",
+      "NODE_02_piezo_impulse_count",
+      "NODE_03_piezo_impulse_count",
+      "NODE_04_piezo_impulse_count",
+      "piezo_impulse_total",
+      "piezo_nodes_with_impulse",
+      "piezo_rms_network_mean"
+    ],
+    "hub": [
+      "hub_common_mode_m",
+      "NODE_01_lidar_range_change_m",
+      "NODE_02_lidar_range_change_m",
+      "NODE_03_lidar_range_change_m",
+      "NODE_04_lidar_range_change_m",
+      "NODE_01_lidar_residual_m",
+      "NODE_02_lidar_residual_m",
+      "NODE_03_lidar_residual_m",
+      "NODE_04_lidar_residual_m",
+      "NODE_01_lidar_staleness_s",
+      "NODE_02_lidar_staleness_s",
+      "NODE_03_lidar_staleness_s",
+      "NODE_04_lidar_staleness_s",
+      "hub_residual_abs_max_m",
+      "hub_staleness_max_s"
+    ],
+    "comm": [
+      "NODE_01_missing_frac",
+      "NODE_02_missing_frac",
+      "NODE_03_missing_frac",
+      "NODE_04_missing_frac",
+      "comm_missing_frac_net",
+      "comm_max_burst_len",
+      "comm_nodes_unavailable",
+      "comm_latency_mean_s",
+      "comm_latency_max_s"
+    ],
+    "long_horizon": [
+      "NODE_01_long_slope_deg_s",
+      "NODE_02_long_slope_deg_s",
+      "NODE_03_long_slope_deg_s",
+      "NODE_04_long_slope_deg_s",
+      "long_slope_max_deg_s"
+    ]
+  },
+  "threshold_rule": {
+    "chosen_thresholds": {
+      "comm_missing_frac_net_th": 0.12,
+      "comm_max_burst_len_th": 2.0,
+      "comm_latency_max_s_th": 3.0,
+      "piezo_rms_network_mean_th": 0.02803,
+      "piezo_nodes_with_impulse_th": 3.0,
+      "hub_common_mode_abs_m_th": 0.21148,
+      "hub_residual_abs_max_m_th": 0.2406,
+      "imu_implausible_tilt_deg_th": 3.5,
+      "imu_stuck_std_deg_th": 0.0001,
+      "imu_spike_std_deg_th": 0.82318,
+      "imu_single_node_ratio_th": 2.8,
+      "basin_tilt_max_deg_th": 0.60727,
+      "basin_tilt_median_deg_th": 0.44616,
+      "rapid_win_slope_deg_s_th": 0.11409,
+      "gradual_long_slope_deg_s_th": 0.00575
+    },
+    "val_tuning_history": [
+      {
+        "q_tilt": 0.94,
+        "sf_ratio": 2.0,
+        "q_rap": 0.6,
+        "val_macro_f1": 0.61772
+      },
+      {
+        "q_tilt": 0.94,
+        "sf_ratio": 2.0,
+        "q_rap": 0.75,
+        "val_macro_f1": 0.62166
+      },
+      {
+        "q_tilt": 0.94,
+        "sf_ratio": 2.0,
+        "q_rap": 0.85,
+        "val_macro_f1": 0.6265
+      },
+      {
+        "q_tilt": 0.94,
+        "sf_ratio": 2.4,
+        "q_rap": 0.6,
+        "val_macro_f1": 0.61504
+      },
+      {
+        "q_tilt": 0.94,
+        "sf_ratio": 2.4,
+        "q_rap": 0.75,
+        "val_macro_f1": 0.61917
+      },
+      {
+        "q_tilt": 0.94,
+        "sf_ratio": 2.4,
+        "q_rap": 0.85,
+        "val_macro_f1": 0.62402
+      },
+      {
+        "q_tilt": 0.94,
+        "sf_ratio": 2.8,
+        "q_rap": 0.6,
+        "val_macro_f1": 0.61863
+      },
+      {
+        "q_tilt": 0.94,
+        "sf_ratio": 2.8,
+        "q_rap": 0.75,
+        "val_macro_f1": 0.62302
+      },
+      {
+        "q_tilt": 0.94,
+        "sf_ratio": 2.8,
+        "q_rap": 0.85,
+        "val_macro_f1": 0.6279
+      },
+      {
+        "q_tilt": 0.96,
+        "sf_ratio": 2.0,
+        "q_rap": 0.6,
+        "val_macro_f1": 0.62122
+      },
+      {
+        "q_tilt": 0.96,
+        "sf_ratio": 2.0,
+        "q_rap": 0.75,
+        "val_macro_f1": 0.62467
+      },
+      {
+        "q_tilt": 0.96,
+        "sf_ratio": 2.0,
+        "q_rap": 0.85,
+        "val_macro_f1": 0.62946
+      },
+      {
+        "q_tilt": 0.96,
+        "sf_ratio": 2.4,
+        "q_rap": 0.6,
+        "val_macro_f1": 0.61863
+      },
+      {
+        "q_tilt": 0.96,
+        "sf_ratio": 2.4,
+        "q_rap": 0.75,
+        "val_macro_f1": 0.62228
+      },
+      {
+        "q_tilt": 0.96,
+        "sf_ratio": 2.4,
+        "q_rap": 0.85,
+        "val_macro_f1": 0.62709
+      },
+      {
+        "q_tilt": 0.96,
+        "sf_ratio": 2.8,
+        "q_rap": 0.6,
+        "val_macro_f1": 0.62228
+      },
+      {
+        "q_tilt": 0.96,
+        "sf_ratio": 2.8,
+        "q_rap": 0.75,
+        "val_macro_f1": 0.62601
+      },
+      {
+        "q_tilt": 0.96,
+        "sf_ratio": 2.8,
+        "q_rap": 0.85,
+        "val_macro_f1": 0.63082
+      },
+      {
+        "q_tilt": 0.98,
+        "sf_ratio": 2.0,
+        "q_rap": 0.6,
+        "val_macro_f1": 0.61891
+      },
+      {
+        "q_tilt": 0.98,
+        "sf_ratio": 2.0,
+        "q_rap": 0.75,
+        "val_macro_f1": 0.62193
+      },
+      {
+        "q_tilt": 0.98,
+        "sf_ratio": 2.0,
+        "q_rap": 0.85,
+        "val_macro_f1": 0.62663
+      },
+      {
+        "q_tilt": 0.98,
+        "sf_ratio": 2.4,
+        "q_rap": 0.6,
+        "val_macro_f1": 0.61618
+      },
+      {
+        "q_tilt": 0.98,
+        "sf_ratio": 2.4,
+        "q_rap": 0.75,
+        "val_macro_f1": 0.61942
+      },
+      {
+        "q_tilt": 0.98,
+        "sf_ratio": 2.4,
+        "q_rap": 0.85,
+        "val_macro_f1": 0.62415
+      },
+      {
+        "q_tilt": 0.98,
+        "sf_ratio": 2.8,
+        "q_rap": 0.6,
+        "val_macro_f1": 0.62008
+      },
+      {
+        "q_tilt": 0.98,
+        "sf_ratio": 2.8,
+        "q_rap": 0.75,
+        "val_macro_f1": 0.62338
+      },
+      {
+        "q_tilt": 0.98,
+        "sf_ratio": 2.8,
+        "q_rap": 0.85,
+        "val_macro_f1": 0.62805
+      },
+      {
+        "q_tilt": 0.99,
+        "sf_ratio": 2.0,
+        "q_rap": 0.6,
+        "val_macro_f1": 0.61992
+      },
+      {
+        "q_tilt": 0.99,
+        "sf_ratio": 2.0,
+        "q_rap": 0.75,
+        "val_macro_f1": 0.6219
+      },
+      {
+        "q_tilt": 0.99,
+        "sf_ratio": 2.0,
+        "q_rap": 0.85,
+        "val_macro_f1": 0.62623
+      },
+      {
+        "q_tilt": 0.99,
+        "sf_ratio": 2.4,
+        "q_rap": 0.6,
+        "val_macro_f1": 0.61726
+      },
+      {
+        "q_tilt": 0.99,
+        "sf_ratio": 2.4,
+        "q_rap": 0.75,
+        "val_macro_f1": 0.61948
+      },
+      {
+        "q_tilt": 0.99,
+        "sf_ratio": 2.4,
+        "q_rap": 0.85,
+        "val_macro_f1": 0.62384
+      },
+      {
+        "q_tilt": 0.99,
+        "sf_ratio": 2.8,
+        "q_rap": 0.6,
+        "val_macro_f1": 0.62138
+      },
+      {
+        "q_tilt": 0.99,
+        "sf_ratio": 2.8,
+        "q_rap": 0.75,
+        "val_macro_f1": 0.62364
+      },
+      {
+        "q_tilt": 0.99,
+        "sf_ratio": 2.8,
+        "q_rap": 0.85,
+        "val_macro_f1": 0.6279
+      }
+    ]
+  },
+  "logistic_regression": {
+    "best_params": {
+      "C": 0.1,
+      "class_weight": "balanced",
+      "max_iter": 1000,
+      "random_state": 20261117
+    },
+    "val_grid": [
+      {
+        "C": 0.1,
+        "val_macro_f1": 0.54883
+      },
+      {
+        "C": 1.0,
+        "val_macro_f1": 0.54666
+      },
+      {
+        "C": 5.0,
+        "val_macro_f1": 0.54568
+      }
+    ]
+  },
+  "random_forest": {
+    "best_params": {
+      "n_estimators": 200,
+      "max_depth": 20,
+      "min_samples_leaf": 3,
+      "class_weight": "balanced",
+      "random_state": 20261117
+    },
+    "val_grid": [
+      {
+        "n_estimators": 120,
+        "max_depth": 12,
+        "min_samples_leaf": 1,
+        "val_macro_f1": 0.61075
+      },
+      {
+        "n_estimators": 120,
+        "max_depth": 12,
+        "min_samples_leaf": 3,
+        "val_macro_f1": 0.60542
+      },
+      {
+        "n_estimators": 120,
+        "max_depth": 20,
+        "min_samples_leaf": 1,
+        "val_macro_f1": 0.6211
+      },
+      {
+        "n_estimators": 120,
+        "max_depth": 20,
+        "min_samples_leaf": 3,
+        "val_macro_f1": 0.62081
+      },
+      {
+        "n_estimators": 200,
+        "max_depth": 12,
+        "min_samples_leaf": 1,
+        "val_macro_f1": 0.61573
+      },
+      {
+        "n_estimators": 200,
+        "max_depth": 12,
+        "min_samples_leaf": 3,
+        "val_macro_f1": 0.61403
+      },
+      {
+        "n_estimators": 200,
+        "max_depth": 20,
+        "min_samples_leaf": 1,
+        "val_macro_f1": 0.61732
+      },
+      {
+        "n_estimators": 200,
+        "max_depth": 20,
+        "min_samples_leaf": 3,
+        "val_macro_f1": 0.62235
+      }
+    ]
+  }
+}
