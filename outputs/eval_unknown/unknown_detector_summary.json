@@ -1,0 +1,357 @@
+{
+  "elapsed_s": 62.36,
+  "frozen_files_verified": 19,
+  "thresholds": {
+    "isolation_forest": {
+      "fitted_on_n_windows": 21305,
+      "threshold": 0.467299,
+      "threshold_quantile_val": 0.87,
+      "val_tuning_summary": {
+        "chosen_threshold": 0.467299,
+        "chosen_quantile_on_val_normal": 0.87,
+        "k": 3,
+        "m": 3,
+        "fa_target_per_normal_run": 1.0,
+        "val_n_normal_runs": 20,
+        "val_n_normal_windows": 1900,
+        "val_fa_episodes_per_normal_run": 1.0,
+        "val_fa_windows_per_normal_run": 4.4,
+        "sample_curve": [
+          {
+            "quantile": 0.5,
+            "threshold": 0.431283,
+            "val_fa_episodes_per_normal_run": 3.95,
+            "val_fa_windows_per_normal_run": 43.8
+          },
+          {
+            "quantile": 0.52,
+            "threshold": 0.432732,
+            "val_fa_episodes_per_normal_run": 4.05,
+            "val_fa_windows_per_normal_run": 40.75
+          },
+          {
+            "quantile": 0.54,
+            "threshold": 0.434019,
+            "val_fa_episodes_per_normal_run": 3.95,
+            "val_fa_windows_per_normal_run": 38.05
+          },
+          {
+            "quantile": 0.56,
+            "threshold": 0.435422,
+            "val_fa_episodes_per_normal_run": 3.75,
+            "val_fa_windows_per_normal_run": 36.25
+          },
+          {
+            "quantile": 0.58,
+            "threshold": 0.436556,
+            "val_fa_episodes_per_normal_run": 3.65,
+            "val_fa_windows_per_normal_run": 33.2
+          },
+          {
+            "quantile": 0.6,
+            "threshold": 0.438474,
+            "val_fa_episodes_per_normal_run": 3.45,
+            "val_fa_windows_per_normal_run": 31.85
+          },
+          {
+            "quantile": 0.62,
+            "threshold": 0.440464,
+            "val_fa_episodes_per_normal_run": 3.4,
+            "val_fa_windows_per_normal_run": 29.35
+          },
+          {
+            "quantile": 0.64,
+            "threshold": 0.441684,
+            "val_fa_episodes_per_normal_run": 3.5,
+            "val_fa_windows_per_normal_run": 27.95
+          },
+          {
+            "quantile": 0.66,
+            "threshold": 0.443338,
+            "val_fa_episodes_per_normal_run": 3.25,
+            "val_fa_windows_per_normal_run": 24.95
+          },
+          {
+            "quantile": 0.68,
+            "threshold": 0.445148,
+            "val_fa_episodes_per_normal_run": 2.95,
+            "val_fa_windows_per_normal_run": 22.35
+          },
+          {
+            "quantile": 0.7,
+            "threshold": 0.447055,
+            "val_fa_episodes_per_normal_run": 2.8,
+            "val_fa_windows_per_normal_run": 20.2
+          },
+          {
+            "quantile": 0.72,
+            "threshold": 0.448878,
+            "val_fa_episodes_per_normal_run": 2.6,
+            "val_fa_windows_per_normal_run": 17.95
+          },
+          {
+            "quantile": 0.74,
+            "threshold": 0.450572,
+            "val_fa_episodes_per_normal_run": 2.2,
+            "val_fa_windows_per_normal_run": 15.5
+          },
+          {
+            "quantile": 0.76,
+            "threshold": 0.453152,
+            "val_fa_episodes_per_normal_run": 1.9,
+            "val_fa_windows_per_normal_run": 13.1
+          },
+          {
+            "quantile": 0.78,
+            "threshold": 0.454992,
+            "val_fa_episodes_per_normal_run": 1.9,
+            "val_fa_windows_per_normal_run": 11.8
+          },
+          {
+            "quantile": 0.8,
+            "threshold": 0.457756,
+            "val_fa_episodes_per_normal_run": 1.55,
+            "val_fa_windows_per_normal_run": 9.3
+          },
+          {
+            "quantile": 0.82,
+            "threshold": 0.460722,
+            "val_fa_episodes_per_normal_run": 1.5,
+            "val_fa_windows_per_normal_run": 8.05
+          },
+          {
+            "quantile": 0.84,
+            "threshold": 0.46313,
+            "val_fa_episodes_per_normal_run": 1.3,
+            "val_fa_windows_per_normal_run": 6.1
+          },
+          {
+            "quantile": 0.86,
+            "threshold": 0.466291,
+            "val_fa_episodes_per_normal_run": 1.1,
+            "val_fa_windows_per_normal_run": 5.0
+          },
+          {
+            "quantile": 0.88,
+            "threshold": 0.468844,
+            "val_fa_episodes_per_normal_run": 0.9,
+            "val_fa_windows_per_normal_run": 4.05
+          },
+          {
+            "quantile": 0.9,
+            "threshold": 0.473109,
+            "val_fa_episodes_per_normal_run": 0.7,
+            "val_fa_windows_per_normal_run": 2.55
+          },
+          {
+            "quantile": 0.92,
+            "threshold": 0.477132,
+            "val_fa_episodes_per_normal_run": 0.55,
+            "val_fa_windows_per_normal_run": 1.95
+          },
+          {
+            "quantile": 0.94,
+            "threshold": 0.482097,
+            "val_fa_episodes_per_normal_run": 0.4,
+            "val_fa_windows_per_normal_run": 1.4
+          },
+          {
+            "quantile": 0.96,
+            "threshold": 0.488878,
+            "val_fa_episodes_per_normal_run": 0.2,
+            "val_fa_windows_per_normal_run": 0.65
+          },
+          {
+            "quantile": 0.98,
+            "threshold": 0.503087,
+            "val_fa_episodes_per_normal_run": 0.1,
+            "val_fa_windows_per_normal_run": 0.3
+          }
+        ]
+      }
+    },
+    "robust_mahalanobis": {
+      "fitted_on_n_windows": 21305,
+      "threshold": 9.759898,
+      "threshold_quantile_val": 0.825,
+      "val_tuning_summary": {
+        "chosen_threshold": 9.759898,
+        "chosen_quantile_on_val_normal": 0.825,
+        "k": 3,
+        "m": 3,
+        "fa_target_per_normal_run": 1.0,
+        "val_n_normal_runs": 20,
+        "val_n_normal_windows": 1900,
+        "val_fa_episodes_per_normal_run": 1.0,
+        "val_fa_windows_per_normal_run": 10.7,
+        "sample_curve": [
+          {
+            "quantile": 0.5,
+            "threshold": 7.797579,
+            "val_fa_episodes_per_normal_run": 3.15,
+            "val_fa_windows_per_normal_run": 45.1
+          },
+          {
+            "quantile": 0.52,
+            "threshold": 7.871983,
+            "val_fa_episodes_per_normal_run": 3.4,
+            "val_fa_windows_per_normal_run": 42.05
+          },
+          {
+            "quantile": 0.54,
+            "threshold": 7.97738,
+            "val_fa_episodes_per_normal_run": 3.3,
+            "val_fa_windows_per_normal_run": 39.3
+          },
+          {
+            "quantile": 0.56,
+            "threshold": 8.043413,
+            "val_fa_episodes_per_normal_run": 2.9,
+            "val_fa_windows_per_normal_run": 36.3
+          },
+          {
+            "quantile": 0.58,
+            "threshold": 8.11084,
+            "val_fa_episodes_per_normal_run": 3.0,
+            "val_fa_windows_per_normal_run": 34.25
+          },
+          {
+            "quantile": 0.6,
+            "threshold": 8.214959,
+            "val_fa_episodes_per_normal_run": 2.85,
+            "val_fa_windows_per_normal_run": 31.45
+          },
+          {
+            "quantile": 0.62,
+            "threshold": 8.325393,
+            "val_fa_episodes_per_normal_run": 2.65,
+            "val_fa_windows_per_normal_run": 28.85
+          },
+          {
+            "quantile": 0.64,
+            "threshold": 8.445929,
+            "val_fa_episodes_per_normal_run": 2.65,
+            "val_fa_windows_per_normal_run": 27.45
+          },
+          {
+            "quantile": 0.66,
+            "threshold": 8.524488,
+            "val_fa_episodes_per_normal_run": 2.65,
+            "val_fa_windows_per_normal_run": 25.75
+          },
+          {
+            "quantile": 0.68,
+            "threshold": 8.642859,
+            "val_fa_episodes_per_normal_run": 2.6,
+            "val_fa_windows_per_normal_run": 24.0
+          },
+          {
+            "quantile": 0.7,
+            "threshold": 8.782886,
+            "val_fa_episodes_per_normal_run": 2.3,
+            "val_fa_windows_per_normal_run": 20.85
+          },
+          {
+            "quantile": 0.72,
+            "threshold": 8.897147,
+            "val_fa_episodes_per_normal_run": 2.15,
+            "val_fa_windows_per_normal_run": 19.05
+          },
+          {
+            "quantile": 0.74,
+            "threshold": 9.021178,
+            "val_fa_episodes_per_normal_run": 1.8,
+            "val_fa_windows_per_normal_run": 17.05
+          },
+          {
+            "quantile": 0.76,
+            "threshold": 9.143696,
+            "val_fa_episodes_per_normal_run": 1.7,
+            "val_fa_windows_per_normal_run": 16.15
+          },
+          {
+            "quantile": 0.78,
+            "threshold": 9.293514,
+            "val_fa_episodes_per_normal_run": 1.55,
+            "val_fa_windows_per_normal_run": 14.2
+          },
+          {
+            "quantile": 0.8,
+            "threshold": 9.481018,
+            "val_fa_episodes_per_normal_run": 1.25,
+            "val_fa_windows_per_normal_run": 12.6
+          },
+          {
+            "quantile": 0.82,
+            "threshold": 9.659475,
+            "val_fa_episodes_per_normal_run": 1.05,
+            "val_fa_windows_per_normal_run": 11.2
+          },
+          {
+            "quantile": 0.84,
+            "threshold": 9.978995,
+            "val_fa_episodes_per_normal_run": 0.8,
+            "val_fa_windows_per_normal_run": 9.6
+          },
+          {
+            "quantile": 0.86,
+            "threshold": 10.281021,
+            "val_fa_episodes_per_normal_run": 0.5,
+            "val_fa_windows_per_normal_run": 8.4
+          },
+          {
+            "quantile": 0.88,
+            "threshold": 10.685739,
+            "val_fa_episodes_per_normal_run": 0.35,
+            "val_fa_windows_per_normal_run": 7.7
+          },
+          {
+            "quantile": 0.9,
+            "threshold": 11.111946,
+            "val_fa_episodes_per_normal_run": 0.15,
+            "val_fa_windows_per_normal_run": 6.95
+          },
+          {
+            "quantile": 0.92,
+            "threshold": 11.9674,
+            "val_fa_episodes_per_normal_run": 0.1,
+            "val_fa_windows_per_normal_run": 6.7
+          },
+          {
+            "quantile": 0.94,
+            "threshold": 15.72018,
+            "val_fa_episodes_per_normal_run": 0.1,
+            "val_fa_windows_per_normal_run": 5.45
+          },
+          {
+            "quantile": 0.96,
+            "threshold": 23.740361,
+            "val_fa_episodes_per_normal_run": 0.1,
+            "val_fa_windows_per_normal_run": 3.6
+          },
+          {
+            "quantile": 0.98,
+            "threshold": 33.22296,
+            "val_fa_episodes_per_normal_run": 0.05,
+            "val_fa_windows_per_normal_run": 1.75
+          }
+        ]
+      }
+    }
+  },
+  "git": {
+    "commit": "76ea0144e75e23ee9eb312381e371c631673d077",
+    "dirty": true,
+    "dirty_file_count": 6
+  },
+  "libraries": {
+    "python": "3.14.0",
+    "numpy": "2.4.2",
+    "pandas": "3.0.1",
+    "scikit-learn": "1.8.0",
+    "PyYAML": "6.0.3",
+    "matplotlib": "3.11.2",
+    "pydantic": "2.12.5",
+    "pytest": "8.4.2"
+  }
+}

@@ -1,0 +1,13 @@
+detector,class_vs_normal,n_class_windows,n_normal_windows,auroc,auroc_ci_lo,auroc_ci_hi,window_flag_recall_raw,window_flag_recall_raw_ci_lo,window_flag_recall_raw_ci_hi,window_flag_recall_persisted,window_flag_recall_persisted_ci_lo,window_flag_recall_persisted_ci_hi
+isolation_forest,gradual,1333,7154,0.5937,0.536,0.6617,0.2056,0.135,0.3096,0.1455,0.0635,0.2711
+isolation_forest,rapid,1167,7154,0.6173,0.5449,0.6934,0.2108,0.145,0.2835,0.156,0.0782,0.2334
+isolation_forest,abnormal_vibration,502,7154,1.0,1.0,1.0,1.0,1.0,1.0,0.9661,0.9538,0.9776
+isolation_forest,sensor_fault,555,7154,0.6636,0.5949,0.7331,0.2613,0.1912,0.351,0.182,0.0952,0.2786
+isolation_forest,comm_fault,530,7154,0.9088,0.8619,0.9458,0.7189,0.5965,0.8274,0.7132,0.5665,0.8408
+isolation_forest,all_known_anomalies,4087,7154,0.7007,0.6549,0.7395,0.3788,0.318,0.4382,0.3279,0.2642,0.3907
+robust_mahalanobis,gradual,1333,7154,0.6207,0.5489,0.6981,0.2596,0.1543,0.3929,0.1853,0.0809,0.3174
+robust_mahalanobis,rapid,1167,7154,0.6865,0.5707,0.8015,0.3967,0.2218,0.5697,0.347,0.1631,0.5297
+robust_mahalanobis,abnormal_vibration,502,7154,0.9965,0.9916,0.9997,1.0,1.0,1.0,0.9622,0.951,0.9718
+robust_mahalanobis,sensor_fault,555,7154,0.7517,0.666,0.8516,0.5099,0.3473,0.6742,0.4541,0.2712,0.6277
+robust_mahalanobis,comm_fault,530,7154,0.9829,0.9684,0.9934,0.9585,0.9198,0.9873,0.9208,0.8846,0.9471
+robust_mahalanobis,all_known_anomalies,4087,7154,0.7504,0.6953,0.7985,0.5143,0.4221,0.5963,0.4588,0.3654,0.5408

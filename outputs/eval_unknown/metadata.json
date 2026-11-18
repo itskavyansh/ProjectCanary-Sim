@@ -1,0 +1,84 @@
+{
+  "created_utc": "2026-11-18T04:08:07+00:00",
+  "synthetic": true,
+  "git": {
+    "commit": "76ea0144e75e23ee9eb312381e371c631673d077",
+    "dirty": true,
+    "dirty_file_count": 6
+  },
+  "libraries": {
+    "python": "3.14.0",
+    "numpy": "2.4.2",
+    "pandas": "3.0.1",
+    "scikit-learn": "1.8.0",
+    "PyYAML": "6.0.3",
+    "matplotlib": "3.11.2",
+    "pydantic": "2.12.5",
+    "pytest": "8.4.2"
+  },
+  "configs": {
+    "unknown_detector": {
+      "path": "D:/Github Projects/ProjectCanary-Sim/configs/unknown_detector.yaml",
+      "sha256": "ac5791cb86347059cf8ad6832802d095108b0704a689c3d1c1b2b0be0650a395",
+      "content": "# Unsupervised \"unknown_anomaly\" detector configuration (SYNTHETIC / SIMULATION).\n# Fitted strictly on TRAIN normal windows (81 model features only, never diag_ columns).\n# Threshold tuned strictly on VAL normal windows under (k=3, m=3) persistence to achieve\n# at most 1.0 false-alarm episode per normal run.\nseed: 20261117\n\npersistence:\n  k: 3\n  m: 3\n  fa_target_episodes_per_normal_run: 1.0\n\nthreshold_search:\n  quantile_start: 0.50\n  quantile_stop: 0.999\n  num_points: 500\n\nisolation_forest:\n  n_estimators: 200\n  max_samples: \"auto\"\n  contamination: \"auto\"\n  clip_scaled: 10000.0\n\nrobust_mahalanobis:\n  trim_quantile: 0.98\n  shrinkage: 0.10\n  min_scale: 0.0001\n  z_clip: 50.0\n"
+    }
+  },
+  "files": {
+    "complement_analysis.csv": {
+      "sha256": "e440a0b2933d5bb99181333079944c2c6ffa1990291c75ac87561eb9944762a2",
+      "bytes": 22973
+    },
+    "complement_analysis.md": {
+      "sha256": "f8a9f3c94b5203e7119a5e6ea45f160ed9ca465a3278ff8a250692a7cbc628e9",
+      "bytes": 23059
+    },
+    "detector_thresholds.json": {
+      "sha256": "87d401a0f5920bef1c61d96bb1c578eaefdf748cd28c0c49827ee120e8862844",
+      "bytes": 11079
+    },
+    "detector_thresholds.md": {
+      "sha256": "9a690b6c41a7042fe402c306f83e4c55e4a778461b5130416a96ea46603726fc",
+      "bytes": 1216
+    },
+    "run_level_detection_and_fa.csv": {
+      "sha256": "015b9dfc5c059fe26db18dc7839bbe58fc22364192108c90204759482f444105",
+      "bytes": 4808
+    },
+    "run_level_detection_and_fa.md": {
+      "sha256": "174514ef306c9ff3d9b5bff1efde34e0e47156086edd73d4a9049f94c3a137c0",
+      "bytes": 6230
+    },
+    "snr_bin_recall_gradual_rapid.csv": {
+      "sha256": "bf92701a9ee43a3c2f00ce7ca280f3de360e90d800a2c1e7a73131f8d64b6826",
+      "bytes": 30596
+    },
+    "snr_bin_recall_gradual_rapid.md": {
+      "sha256": "063dbf25660db703762eb8342b3314c93c5ccdc34c580a79d848afd383341ba6",
+      "bytes": 41924
+    },
+    "test_per_class_auroc_and_recall.csv": {
+      "sha256": "5f45c6200c5a57a64bc5101fcab9e4bb6a83481df670a9baee39f355102e3a2f",
+      "bytes": 1484
+    },
+    "test_per_class_auroc_and_recall.md": {
+      "sha256": "75114ffabbc6eacfcc072ec65da6d13efbce5c6fbd4d7c5ea334eb2542b69c8a",
+      "bytes": 2093
+    },
+    "unknown_complement_tradeoff.png": {
+      "sha256": "842591ba743572e5f8f021bb3d87deb286bc1c30fcc6955d503b7e10917721c6",
+      "bytes": 155868
+    },
+    "unknown_detector_summary.json": {
+      "sha256": "7ab5c081503ce80dc98a60644c68761ff3e008d5a489640d783d50e179ee4092",
+      "bytes": 11409
+    },
+    "unknown_run_detection_across_regimes.png": {
+      "sha256": "a8b5d60aecfc4d9980720ae95eaaf730be65547da9c9521cc410c9e096060fd2",
+      "bytes": 131021
+    },
+    "unknown_test_auroc_and_snr_recall.png": {
+      "sha256": "e78819096d0bf9bbde90886b12e7e5e37581eb107487350ffe94e6a1bf23859c",
+      "bytes": 199892
+    }
+  }
+}
